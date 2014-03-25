@@ -81,10 +81,10 @@ Purchase: http://themeforest.net/item/conquer-responsive-admin-dashboard-templat
 					</a>
 				</li>
                 <li>
-					<a href="{% url "codevaldapp:XMLToCode" %}">
+					<a href="{% url "codevaldapp:GenerateCode" %}">
 						<i class="fa fa-gears"></i>
 						<span class="title">
-							XML to Code
+							Generate Code
 						</span>
 					</a>
 				</li>
@@ -151,7 +151,7 @@ Purchase: http://themeforest.net/item/conquer-responsive-admin-dashboard-templat
 			</div>
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->
-            <form action="{% url 'codevaldapp:MySQLToXML' %}" method="post">
+            <form action="{% url action %}" method="post">
             {% csrf_token %}
                 {{ content }}
 

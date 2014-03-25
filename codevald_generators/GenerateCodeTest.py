@@ -16,7 +16,7 @@ template = strPath + "blltemplate.txt"
 o_template = open(template).read()
 
 o_buildtemplate = buildtemplate(o_template)
-pycode = o_buildtemplate.pycode
+pycode = o_buildtemplate.pycodegenerator
 code = []
 #print(pycode)
 
@@ -44,3 +44,12 @@ f.close()
 
 #for each_entity in o_ReadXML.entities:
 #    print (each_entity.name)
+
+codelist = []
+
+for each_entity in o_ReadXML.entities:
+    codelist.append(' \nInteface ' + each_entity.name + 'list \n       \nEnd Inteface \n \nPublic class''' + each_entity.name + ' \n      \'Class for ' + each_entity.name + ' \nEnd Sub \n\n')
+
+
+for each_entity in o_ReadXML.entities:
+    codelist.append(' \nPublic class ' + each_entity.name + 'list \n      Inherit list(of ' + each_entity.name + ') \nEnd''Sub')

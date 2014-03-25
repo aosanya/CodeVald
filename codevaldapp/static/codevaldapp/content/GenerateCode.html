@@ -10,29 +10,32 @@
                 <div class="tabbable portlet-tabs">
                     <ul class="nav nav-tabs">
                         <li>
-                            <a href="#portlet_tab_3" data-toggle="tab">XML</a>
+                            <a href="#portlet_tab_3" data-toggle="tab">Code!</a>
+                        </li>
+                        <li>
+                            <input class="btn btn-lg btn-success hidden-print" type="submit" value="Generate" />
                         </li>
                         <li>
                             <a href="#portlet_tab_2" data-toggle="tab">Template</a>
                         </li>
                         <li class="active">
-                            <a href="#portlet_tab_1" data-toggle="tab">Code!</a>
+                            <a href="#portlet_tab_1" data-toggle="tab">XML</a>
                         </li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="portlet_tab_1">
                             <p>
-                                <input type="text" id="txtXML" style="width:100%;height:500px">
+                                <textarea name="txtXML" style="width:100%;height:500px">{{ XML }}</textarea>
                             </p>
                         </div>
                         <div class="tab-pane" id="portlet_tab_2">
                             <p>
-                                <input type="text" id="txtTemplate" style="width:100%;height:500px">
+                                <textarea name="txtCodeTemplate" style="width:100%;height:500px">{{ CodeTemplate }}</textarea>
                             </p>
                         </div>
                         <div class="tab-pane" id="portlet_tab_3">
                             <p>
-                                <input type="text" id="txtCode" style="width:100%;height:500px">
+                                <textarea name="txtNewCode" style="width:100%;height:500px">{{ NewCode }}</textarea>
                             </p>
                         </div>
                     </div>
