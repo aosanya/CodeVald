@@ -1,23 +1,23 @@
 __author__ = 'Tony'
 
 import os
-from ReadXML import ReadXML
-from buildtemplate import buildtemplate
-from entity import entity
+from codevald_generators.ReadXML import ReadXML
+from codevald_generators.CodeGenerator import GenerateCode
+from codevald_generators.entity import entity
 
 strPath = os.path.dirname(__file__)+"/../datamodels/"
 
 filename = strPath + "Sakila.xml"
 
-o_XML = open(filename).read()
-o_ReadXML = ReadXML(o_XML)
+o_XMLPlain = open(filename).read()
+o_XML = ReadXML(o_XMLPlain)
 
-template = strPath + "blltemplate.txt"
+template = strPath + "ModelTemplates.txt"
 o_template = open(template).read()
 
-o_buildtemplate = buildtemplate(o_template)
-pycode = o_buildtemplate.pycodegenerator
-code = []
+o_GenerateCode = GenerateCode(o_template)
+pycode = o_GenerateCode.pycodegenerator
+codelist = []
 #print(pycode)
 
 filename = strPath + "codetorun.txt"
@@ -26,17 +26,12 @@ f = open(filename, "w")
 f.write(pycode)
 f.close()
 
-
-
-
-
-
-
 filename = strPath + "code.txt"
+
 
 exec(pycode)
 f = open(filename, "w")
-for each_code in code:
+for each_code in codelist:
     f.write(each_code)
 f.close()
 
@@ -45,11 +40,3 @@ f.close()
 #for each_entity in o_ReadXML.entities:
 #    print (each_entity.name)
 
-codelist = []
-
-for each_entity in o_ReadXML.entities:
-    codelist.append(' \nInteface ' + each_entity.name + 'list \n       \nEnd Inteface \n \nPublic class''' + each_entity.name + ' \n      \'Class for ' + each_entity.name + ' \nEnd Sub \n\n')
-
-
-for each_entity in o_ReadXML.entities:
-    codelist.append(' \nPublic class ' + each_entity.name + 'list \n      Inherit list(of ' + each_entity.name + ') \nEnd''Sub')

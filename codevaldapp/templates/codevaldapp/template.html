@@ -63,42 +63,7 @@ Purchase: http://themeforest.net/item/conquer-responsive-admin-dashboard-templat
 	<div class="page-sidebar-wrapper">
 		<div class="page-sidebar navbar-collapse collapse">
 			<!-- BEGIN SIDEBAR MENU -->
-			<ul class="page-sidebar-menu">
-                <li>
-					<a href="{% url "codevaldapp:index" %}">
-						<i class="fa fa-anchor"></i>
-						<span class="title">
-							Home
-						</span>
-					</a>
-				</li>
-                <li>
-					<a href="{% url "codevaldapp:MySQLToXML" %}">
-						<i class="fa fa-coffee"></i>
-						<span class="title">
-							MySQL to XML
-						</span>
-					</a>
-				</li>
-                <li>
-					<a href="{% url "codevaldapp:GenerateCode" %}">
-						<i class="fa fa-gears"></i>
-						<span class="title">
-							Generate Code
-						</span>
-					</a>
-				</li>
-				<li class="start active ">
-					<a href="{% url "codevaldapp:Team" %}">
-						<i class="fa fa-trophy"></i>
-						<span class="title">
-							The Team
-						</span>
-                        <span class="selected">
-						</span>
-					</a>
-				</li>
-			</ul>
+                {{ menu }}
 			<!-- END SIDEBAR MENU -->
 		</div>
 	</div>
@@ -151,7 +116,7 @@ Purchase: http://themeforest.net/item/conquer-responsive-admin-dashboard-templat
 			</div>
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->
-			{{ content }}
+            {{ content }}
 			<!-- END PAGE CONTENT-->
 		</div>
 	</div>

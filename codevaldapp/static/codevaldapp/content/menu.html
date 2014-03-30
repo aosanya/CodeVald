@@ -1,0 +1,39 @@
+            <ul class="page-sidebar-menu">
+                <li>
+					<br/><br/>
+				</li>
+                <li class="{% if currentview == "codevaldapp:index"%}active{% endif %}">
+					<a href="{% url "codevaldapp:index" %}">
+						<i class="fa fa-anchor"></i>
+						<span class="title">
+							Home
+						</span>
+					</a>
+				</li>
+                <li class="{% if currentview == "codevaldapp:MySQLToXML"%}active{% endif %}">
+					<a href="{% url "codevaldapp:MySQLToXML" %}">
+						<i class="fa fa-coffee"></i>
+						<span class="title">
+							MySQL to XML
+						</span>
+					</a>
+				</li>
+                <li class="{% if currentview == "codevaldapp:GenerateCode" %}active{% endif %}">
+					<a href="{% url "codevaldapp:GenerateCode" %}">
+						<i class="fa fa-gears"></i>
+						<span class="title">
+							Generate Code
+						</span>
+					</a>
+				</li>
+				<li class="{% if currentview == "codevaldapp:Team"%}active{% endif %}">
+					<a href="{% url "codevaldapp:Team" %}">
+						<i class="fa fa-trophy"></i>
+						<span class="title">
+							The Team
+						</span>
+                        <span class="selected">
+						</span>
+					</a>
+				</li>
+			</ul>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity name='actor'  ENGINE='InnoDB' DEFAULT_CHARACTER_SET='utf8' >
+	<property>name='actor_id'  type=smallint unsigned=false nullable=false auto_increment=true</property>
+	<property>name='first_name'  type=varchar  precision=45 nullable=false</property>
+	<property>name='last_name'  type=varchar precision=45 nullable=false</property>
+</entity>

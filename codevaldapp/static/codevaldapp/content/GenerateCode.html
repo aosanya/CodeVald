@@ -9,31 +9,31 @@
             <div class="portlet-body">
                 <div class="tabbable portlet-tabs">
                     <ul class="nav nav-tabs">
-                        <li>
+                        <li class="{% if activetab == "Code"%}active{% endif %}">
                             <a href="#portlet_tab_3" data-toggle="tab">Code!</a>
                         </li>
                         <li>
                             <input class="btn btn-lg btn-success hidden-print" type="submit" value="Generate" />
                         </li>
-                        <li>
+                        <li class="{% if activetab == "Template"%}active{% endif %}">
                             <a href="#portlet_tab_2" data-toggle="tab">Template</a>
                         </li>
-                        <li class="active">
+                        <li class="{% if activetab == "XML"%}active{% endif %}">
                             <a href="#portlet_tab_1" data-toggle="tab">XML</a>
                         </li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane active" id="portlet_tab_1">
+                        <div class="tab-pane {% if activetab == "XML"%}active{% endif %}" id="portlet_tab_1">
                             <p>
                                 <textarea name="txtXML" style="width:100%;height:500px">{{ XML }}</textarea>
                             </p>
                         </div>
-                        <div class="tab-pane" id="portlet_tab_2">
+                        <div class="tab-pane {% if activetab == "Template"%}active{% endif %}" id="portlet_tab_2">
                             <p>
                                 <textarea name="txtCodeTemplate" style="width:100%;height:500px">{{ CodeTemplate }}</textarea>
                             </p>
                         </div>
-                        <div class="tab-pane" id="portlet_tab_3">
+                        <div class="tab-pane {% if activetab == "Code"%}active{% endif %}" id="portlet_tab_3">
                             <p>
                                 <textarea name="txtNewCode" style="width:100%;height:500px">{{ NewCode }}</textarea>
                             </p>

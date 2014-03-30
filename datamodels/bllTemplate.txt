@@ -1,0 +1,22 @@
+<entity>
+'---------------beginning of <entity\>----------------
+
+Inteface <entity\>list
+	
+End Inteface
+
+Public class <entity\>
+	'Class for <entity\>
+End Sub
+
+'---------------end of <entity\>----------------
+
+</entity>
+
+<entity>
+'---------------<entity\>list----------------
+Public class <entity\>list
+	Inherit list(of <entity\>)
+End Sub
+
+</entity>

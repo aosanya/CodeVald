@@ -147,3 +147,13 @@ def string_oneinstance(data, findstr, start=0):
         return -1
 
     return found
+
+def startswith(strVal, lstCompare):
+        for each_Compare in lstCompare:
+            tocompare = strVal.strip()
+            tocompare = tocompare.strip("\t")
+            tocompare = tocompare.strip("\n")
+            if strVal.strip()[:len(each_Compare)] == each_Compare:
+                return True
+
+        return False

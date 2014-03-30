@@ -1,0 +1,12 @@
+<entities>
+   <entity name="Entity">
+      <property name="EntityID" label="ID" type="Integer"/>
+      <property name="Name" label="Name" type="String"/>
+      <property name="dob" label="Date Of Birth" type="Date"/>
+      <property name="EntityType" label="Entity Type" type="Integer"/>
+   </entity>
+   <entity Name="EntityType">
+      <property name="EntityTypeID" type="Integer"/>
+      <property name="EntityType" type="Text"/>
+   </entity>
+</entities>
