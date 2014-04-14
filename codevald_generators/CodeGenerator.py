@@ -9,7 +9,7 @@ from codevald_generators import stringoperations
 import textwrap
 strPath = os.path.dirname(__file__)+"/../datamodels/"
 
-
+strNewLine = "@$@!#%#@@!!!!3424"
 class GenerateCode:
     def __init__(self, a_template):
         self.template = a_template
@@ -45,10 +45,27 @@ class GenerateCode:
     @property
     def pycodegenerator(self):
         self.code = self.template
-        self.code.replace("\n", "#@$")
+        self.code.replace("\n", strNewLine)
+
+        filename = strPath + "codestate1.txt"
+        f = open(filename, "w")
+        f.write(self.code)
+        f.close()
+
 
         self.clean_up2()
+
+        filename = strPath + "codestate2.txt"
+        f = open(filename, "w")
+        f.write(self.code)
+        f.close()
+
         self.addcodeappend()
+        filename = strPath + "codestate3.txt"
+        f = open(filename, "w")
+        f.write(self.code)
+        f.close()
+
         self.decorateobjects()
         self.indent("entity")
         self.indent("property")
@@ -63,7 +80,7 @@ class GenerateCode:
         #self.set_property_name()
         #self.set_property_sub()
         self.removeemptylines()
-        self.code.replace("#@$", "\n")
+        self.code.replace(strNewLine, "\n")
         self.removeobjectsdefinition()
         return self.code
 
@@ -134,15 +151,23 @@ class GenerateCode:
 
         loops.append("#objects")
         newcode = self.code
-        newcodelist = newcode.split("\n")
+        seperator = "@$#%Q$VCSv"
+        newcode = newcode.replace("\n", seperator)
+        newcodelist = newcode.split(seperator)
         newcode = ""
         for each_line in newcodelist:
+
             if not stringoperations.startswith(each_line, loops):
-                newcode = newcode + "\n" + "codelist.append('" + each_line + "')"
+                tempcode =  "codelist.append('<code>')"
+
+                tempcode = tempcode.replace("<code>", each_line[0:-1])
+                newcode = newcode + tempcode + "\n"
             else:
-                newcode = newcode + "\n" + each_line
+                tempcode = each_line
+                newcode = newcode + tempcode + "\n"
 
         self.code = newcode
+
 
     def indent(self, tag):
         instances = stringoperations.string_instance(self.code, "<" + tag + ">")
@@ -163,7 +188,7 @@ class GenerateCode:
 
     def decorateobjects(self):
         for each_object in self.codeobjects:
-            self.code = stringoperations.replacephrase(self.code, "<" + each_object + ">", "<" + each_object + ">\n" + each_object + "XML = ReadXML(each_" + each_object + ", True)\no_XML = " + each_object + "XML\n", 0)
+            self.code = stringoperations.replacephrase(self.code, "<" + each_object + ">", "<" + each_object + ">\n" + each_object + "XML = ReadXML.ReadXML(each_" + each_object + ", True)\no_XML = " + each_object + "XML\n", 0)
 
     def removeobjectsdefinition(self):
         objects_start = stringoperations.string_oneinstance(self.code, "#objects")

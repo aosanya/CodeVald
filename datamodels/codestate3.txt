@@ -1,0 +1,13 @@
+#objects = [entity,property]
+codelist.append('')
+<entity>
+codelist.append('class <entity.name\>(models.Model):')
+codelist.append('')
+<property>
+codelist.append('	<property.name\> = models.<property.type\>(max_length=10)')
+	</property>
+codelist.append('	')
+codelist.append('	def __str__(self): # __unicode__ on Python 2 return self.name')
+codelist.append('	')
+</entity>
+codelist.append('')

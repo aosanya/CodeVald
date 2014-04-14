@@ -5,6 +5,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-reorder"></i>Boiler Plate!
+                    <span class="{{ messageclass }}">{{ message }}</span>
                 </div>
             </div>
             <div class="portlet-body">
@@ -28,7 +29,7 @@
                         </div>
                         <div class="tab-pane {% if activetab == "XML"%}active{% endif %}" id="portlet_tab_2">
                             <p>
-                                <textarea name="txtXML"  style="width:100%;height:500px">{{ XML }}</textarea>
+                                <textarea name="txtXML"  style="width:100%;height:500px;background-color: #F5F6CE">{{ XML }}</textarea>
                             </p>
                         </div>
                     </div>

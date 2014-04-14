@@ -1054,6 +1054,18 @@ i.normal {
   color: #b94a48;
 }
 
+.msgsuccess{
+    color : green;
+    font-style:italic;
+    font-size:10px;
+}
+
+.msgerror{
+    color : darkred;
+    font-style:italic;
+    font-size:10px;
+}
+
 /***
 Portlets
 ***/

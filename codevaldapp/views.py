@@ -5,10 +5,13 @@ from django.template import Template, Context, RequestContext
 from codevald_generators import MySQLtoXML
 from codevald_generators import ReadXML
 from codevald_generators import CodeGenerator
+import cgitb
+import os
 
+cgitb.enable
 
 def GetMenu(currentview):
-    content = open('codevaldapp/' + static('codevaldapp/content/menu.html'), 'r+')
+    content = open('codevaldapp/static/codevaldapp/assets/content/menu.html', 'r+')
     t = Template(content.read())
     c = Context({"currentview": currentview})
     content.close()
@@ -18,20 +21,21 @@ def GetMenu(currentview):
 
 def index(request):
     menu = GetMenu("codevaldapp:index")
-    content = open('codevaldapp/' + static('codevaldapp/content/home.html'), 'r+')
+    content = open('codevaldapp/static/codevaldapp/assets/content/home.html', 'r+')
     t = Template(content.read())
+    c = Context({})
     content.close()
-    html = t.render(Context({'router_map'}))
-
+    html = t.render(c)	
     return render(request, 'codevaldapp/template.html', {"title": "CodeVald : Home", "pagetitle": "CodeVald", "pagesubtitle": "XML + Template = (formative) Code", "menu": menu, "content": html})
 
 
 def Team(request):
     menu = GetMenu("codevaldapp:Team")
-    content = open('codevaldapp/' + static('codevaldapp/content/team.html'), 'r+')
+    content = open('codevaldapp/static/codevaldapp/assets/content/team.html', 'r+')
     t = Template(content.read())
+    c = Context({})
     content.close()
-    html = t.render(Context({'router_map'}))
+    html = t.render(c)	
 
     return render(request, 'codevaldapp/template.html', {"title": "CodeVald : Team", "pagetitle": "Team", "pagesubtitle": "", "CurrPage": "Team", "menu": menu, "content": html})
 
@@ -39,6 +43,8 @@ def Team(request):
 def ConvertMySQLToXML(request):
     menu = GetMenu("codevaldapp:MySQLToXML")
     if request.method == "POST":
+        message = "Script not converted"
+        messageclass = "msgerror"
         try:
             MySQL = request.POST['txtMySQL']
         except:
@@ -48,18 +54,24 @@ def ConvertMySQLToXML(request):
         if MySQL != "":
             NewXML = MySQLtoXML.MySQLtoXML(MySQL)
             XML = NewXML.GetXML
+            messageclass = "msgsuccess"
+            message = "Process Complete!"
 
-        content = open('codevaldapp/' + static('codevaldapp/content/MySQLToXML.html'), 'r+')
+        content = open('codevaldapp/static/codevaldapp/assets/content/MySQLToXML.html', 'r+')
         t = Template(content.read())
-        c = Context({"activetab": "XML", "MySQL": MySQL, "XML": XML})
+        c = Context({"activetab": "XML", "MySQL": MySQL, "XML": XML, "message": message, "messageclass": messageclass})
         content.close()
         html = t.render(c)
 
+
         return render_to_response('codevaldapp/template_form.html', {"title": "CodeVald : Convert SQL", "action": "codevaldapp:MySQLToXML", "pagetitle": "Generate XML", "pagesubtitle": "MySQL to XML", "CurrPage": "Generate XML", "menu": menu, "content": html}, context_instance=RequestContext(request))
     else:
-        content = open('codevaldapp/' + static('codevaldapp/content/MySQLToXML.html'), 'r+')
+        content = open('codevaldapp/static/codevaldapp/assets/content/MySQLToXML.html', 'r+')
+        sampleMySQL = open('codevaldapp/data/sakila.sql', 'r+')
+        sampleMySQL = sampleMySQL.read()
+        MySQL = sampleMySQL.__str__()
         t = Template(content.read())
-        c = Context({"activetab": "MySQL", "MySQL": "", "XML": ""})
+        c = Context({"activetab": "MySQL", "MySQL": MySQL, "XML": ""})
         content.close()
         html = t.render(c)
         return render_to_response('codevaldapp/template_form.html', {"title": "CodeVald : Convert SQL", "action": "codevaldapp:MySQLToXML", "pagetitle": "Generate XML", "pagesubtitle": "MySQL to XML", "CurrPage": "Generate XML", "menu": menu, "content": html}, context_instance=RequestContext(request))
@@ -67,7 +79,9 @@ def ConvertMySQLToXML(request):
 
 def GenerateCode(request):
     menu = GetMenu("codevaldapp:GenerateCode")
+    strPath = os.path.dirname(__file__)+"/../datamodels/"
     if request.method == "POST":
+        message = ""
         try:
             XML = request.POST['txtXML']
             CodeTemplate = request.POST['txtCodeTemplate']
@@ -76,28 +90,44 @@ def GenerateCode(request):
             CodeTemplate = ""
 
         if XML != "" and CodeTemplate != "":
-            o_ReadXML = ReadXML.ReadXML(XML)
+            o_XML = ReadXML.ReadXML(XML)
             o_template = CodeTemplate
 
             o_GenerateCode = CodeGenerator.GenerateCode(o_template)
             pycodegenerator = o_GenerateCode.pycodegenerator
             codelist = []
+
+            filename = strPath + "codetorun2.txt"
+
+            f = open(filename, "w")
+            f.write(pycodegenerator)
+            f.close()
             exec(pycodegenerator)
+
             code = ""
             for each_code in codelist:
                 code = code + each_code
+            message = "Process Complete!"
 
-        content = open('codevaldapp/' + static('codevaldapp/content/GenerateCode.html'), 'r+')
+        content = open('codevaldapp/static/codevaldapp/assets/content/GenerateCode.html', 'r+')
         t = Template(content.read())
-        c = Context({"activetab": "Code", "XML": XML, "CodeTemplate": CodeTemplate, "NewCode": code})
+        c = Context({"activetab": "Code", "XML": XML, "CodeTemplate": CodeTemplate, "NewCode": code, "message": message})
         content.close()
         html = t.render(c)
 
         return render_to_response('codevaldapp/template_form.html', {"title": "CodeVald : GenerateCode", "action": "codevaldapp:GenerateCode", "pagetitle": "Generate Code", "pagesubtitle": "XML + Template = (formative) Code", "CurrPage": "Generate Code", "menu": menu, "content": html}, context_instance=RequestContext(request))
     else:
-        content = open('codevaldapp/' + static('codevaldapp/content/GenerateCode.html'), 'r+')
+        content = open('codevaldapp/static/codevaldapp/assets/content/GenerateCode.html', 'r+')
+        sampleXML = open('codevaldapp/data/samplexml.xml', 'r+')
+        sampleXML = sampleXML.read()
+        sampleXML = sampleXML.__str__()
+
+        sampleTemplate = open('codevaldapp/data/sampletemplate.txt', 'r+')
+        sampleTemplate = sampleTemplate.read()
+        sampleTemplate = sampleTemplate.__str__()
+
         t = Template(content.read())
-        c = Context({"activetab": "XML", "XML": "", "CodeTemplate": "", 'NewCode': ""})
+        c = Context({"activetab": "XML", "XML": sampleXML, "CodeTemplate": sampleTemplate, 'NewCode': ""})
         content.close()
         html = t.render(c)
         return render_to_response('codevaldapp/template_form.html', {"title": "CodeVald : GenerateCode", "action": "codevaldapp:GenerateCode", "pagetitle": "Generate Code", "pagesubtitle": "XML + Template = (formative) Code", "CurrPage": "Generate Code", "menu": menu, "content": html}, context_instance=RequestContext(request))

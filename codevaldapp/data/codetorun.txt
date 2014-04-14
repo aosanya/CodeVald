@@ -1,0 +1,10 @@
+<entity>
+	
+	class <entity\>(models.Model):
+		<property>
+	
+			<property/> = models.CharField(max_length=10)
+			</property>
+		
+		def __str__(self): # __unicode__ on Python 2 return self.name
+	</entity>

@@ -7,12 +7,12 @@ from codevald_generators.entity import entity
 
 strPath = os.path.dirname(__file__)+"/../datamodels/"
 
-filename = strPath + "Sakila.xml"
+filename = strPath + "xml2.txt"
 
 o_XMLPlain = open(filename).read()
 o_XML = ReadXML(o_XMLPlain)
 
-template = strPath + "ModelTemplates.txt"
+template = strPath + "template2.txt"
 o_template = open(template).read()
 
 o_GenerateCode = GenerateCode(o_template)
@@ -20,7 +20,7 @@ pycode = o_GenerateCode.pycodegenerator
 codelist = []
 #print(pycode)
 
-filename = strPath + "codetorun.txt"
+filename = strPath + "codetorun4.txt"
 
 f = open(filename, "w")
 f.write(pycode)

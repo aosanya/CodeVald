@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity  schema=sakila name=actor>
+	<property name=actor_id  type=smallint unsigned=false nullable=false auto_increment=true></property>
+	<property name=first_name  type=varchar  precision=45 nullable=false></property>
+	<property name=last_name  type=varchar precision=45 nullable=false></property>
+	<property name=last_update  type=timestamp nullable=false default=CURRENT_TIMESTAMP></property>
+</entity>
+<entity  schema=sakila name=country>
+	<property name=country_id  type=smallint unsigned=false nullable=false auto_increment=true></property>
+	<property name=country  type=varchar precision=50 nullable=false></property>
+	<property name=last_update  type=timestamp nullable=false default=CURRENT_TIMESTAMP></property>
+</entity>
