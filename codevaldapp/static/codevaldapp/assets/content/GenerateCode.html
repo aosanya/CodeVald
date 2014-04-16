@@ -1,46 +1,63 @@
+
 <div class="row">
-    <div class="col-md-9">
-        <div class="portlet tabbable">
+    <div class="col-md-12">
+        <div class="portlet gren">
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-reorder"></i>Boiler Plate!
+
+
                 </div>
             </div>
             <div class="portlet-body">
-                <div class="tabbable portlet-tabs">
-                    <ul class="nav nav-tabs">
-                        <li class="{% if activetab == "Code"%}active{% endif %}">
-                            <a href="#portlet_tab_3" data-toggle="tab">Code!</a>
-                        </li>
-                        <li>
-                            <input class="btn btn-lg btn-success hidden-print" type="submit" value="Generate" />
-                        </li>
-                        <li class="{% if activetab == "Template"%}active{% endif %}">
-                            <a href="#portlet_tab_2" data-toggle="tab">Template</a>
-                        </li>
-                        <li class="{% if activetab == "XML"%}active{% endif %}">
-                            <a href="#portlet_tab_1" data-toggle="tab">XML</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane {% if activetab == "XML"%}active{% endif %}" id="portlet_tab_1">
-                            <p>
-                                <textarea name="txtXML" style="width:100%;height:500px">{{ XML }}</textarea>
-                            </p>
-                        </div>
-                        <div class="tab-pane {% if activetab == "Template"%}active{% endif %}" id="portlet_tab_2">
-                            <p>
-                                <textarea name="txtCodeTemplate" style="width:100%;height:500px">{{ CodeTemplate }}</textarea>
-                            </p>
-                        </div>
-                        <div class="tab-pane {% if activetab == "Code"%}active{% endif %}" id="portlet_tab_3">
-                            <p>
-                                <textarea name="txtNewCode" style="width:100%;height:500px">{{ NewCode }}</textarea>
-                            </p>
-                        </div>
-                    </div>
+                Step 1. Enter XML | Step 2. Enter Template | Step 3. Press Generate<br/>
+                <input class="btn btn-lg btn-success hidden-print" type="submit" value="Generate" />
+                <div id="accordion">
+                  <h3>XML</h3>
+                  <div>
+                    <textarea id="txtXML" name="txtXML" style="width:100%;height:600px">{{ XML }}</textarea>
+                  </div>
+                  <h3>Template</h3>
+                  <div aria-hidden="false">
+                    <textarea id="txtCodeTemplate" name="txtCodeTemplate" style="width:100%;height:600px">{{ CodeTemplate }}</textarea>
+                  </div>
+                  <h3>Code!</h3>
+                  <div>
+                    <textarea id="txtNewCode" name="txtNewCode" style="width:100%;height:500px">{{ NewCode }}</textarea>
+                  </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+  <script>
+  $(function() {
+    $( "#accordion" ).accordion({ active:  {% if activetab == "XML"%}0{% elif activetab == "Template" %}1{% elif activetab == "Code" %}2{% endif %} });
+  });
+  </script>
+<script>
+    var editor = CodeMirror.fromTextArea(document.getElementById("txtXML"), {
+    mode: "application/xml",
+    styleActiveLine: true,
+    lineNumbers: true,
+    lineWrapping: false,
+    matchBrackets : true,
+    autofocus : true
+    });
+</script>
+<script>
+    var editor = CodeMirror.fromTextArea(document.getElementById("txtCodeTemplate"), {
+    mode: "application/xml",
+    styleActiveLine: true,
+    lineNumbers: true,
+    lineWrapping: false
+    });
+</script>
+<script>
+    var editor = CodeMirror.fromTextArea(document.getElementById("txtNewCode"), {
+    mode: "application/text",
+    styleActiveLine: true,
+    lineNumbers: true,
+    lineWrapping: false
+    });
+</script>

@@ -148,6 +148,14 @@ def string_oneinstance(data, findstr, start=0):
 
     return found
 
+
+def highlight(data, findstr, color, start=0):
+    data = data.replace(findstr, "<span color=" + color + ">" + findstr + "</span>")
+    #data = data.replace(findstr, "<b>" + findstr + "</b>")
+
+    return data
+
+
 def startswith(strVal, lstCompare):
         for each_Compare in lstCompare:
             tocompare = strVal.strip()

@@ -5,6 +5,7 @@ from django.template import Template, Context, RequestContext
 from codevald_generators import MySQLtoXML
 from codevald_generators import ReadXML
 from codevald_generators import CodeGenerator
+from codevald_generators import highlighter
 import cgitb
 import os
 
@@ -97,13 +98,9 @@ def GenerateCode(request):
             pycodegenerator = o_GenerateCode.pycodegenerator
             codelist = []
 
-            filename = strPath + "codetorun2.txt"
-
-            f = open(filename, "w")
-            f.write(pycodegenerator)
-            f.close()
             exec(pycodegenerator)
 
+            #CodeTemplate = highlighter.highlighter(CodeTemplate).highlight()
             code = ""
             for each_code in codelist:
                 code = code + each_code
@@ -131,3 +128,4 @@ def GenerateCode(request):
         content.close()
         html = t.render(c)
         return render_to_response('codevaldapp/template_form.html', {"title": "CodeVald : GenerateCode", "action": "codevaldapp:GenerateCode", "pagetitle": "Generate Code", "pagesubtitle": "XML + Template = (formative) Code", "CurrPage": "Generate Code", "menu": menu, "content": html}, context_instance=RequestContext(request))
+
