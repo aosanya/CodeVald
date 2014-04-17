@@ -44,8 +44,8 @@ Purchase: http://themeforest.net/item/conquer-responsive-admin-dashboard-templat
 	<!-- BEGIN TOP NAVIGATION BAR -->
 	<div class="header-inner">
 		<!-- BEGIN LOGO -->
-		<a class="navbar-brand" href="index.html">
-		<img src="{% static 'codevaldapp/assets/img/Logo.png' %}" alt="logo" class="img-responsive"/>
+		<a class="navbar-brand" href="{% url "index" %}">
+		<img src="{% static 'codevaldapp/assets/img/logo.png' %}" alt="logo" class="img-responsive" style="width:120px"/>
 		</a>
 		<!-- END RESPONSIVE MENU TOGGLER -->
 	</ul>
@@ -104,7 +104,7 @@ Purchase: http://themeforest.net/item/conquer-responsive-admin-dashboard-templat
 					<ul class="page-breadcrumb breadcrumb">
 						<li>
 							<i class="fa fa-home"></i>
-							<a href="{% url "codevaldapp:index" %}">Home</a>
+							<a href="{% url "index" %}">Home</a>
 							<i class="fa fa-angle-right"></i>
 						</li>
 						<li>

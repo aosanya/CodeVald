@@ -5,11 +5,25 @@ from django.template import Template, Context, RequestContext
 from codevald_generators import MySQLtoXML
 from codevald_generators import ReadXML
 from codevald_generators import CodeGenerator
-from codevald_generators import highlighter
 import cgitb
 import os
+from inspect import stack, getmodule
 
 cgitb.enable
+
+
+def ContextWithView(request):
+    """Template context with current_view value,
+    a string with the full namespaced django view in use.
+    """
+    # Frame 0 is the current frame
+    # So assuming normal usage the frame of the view
+    # calling this processor should be Frame 1
+    name = getmodule(stack()[1][0]).__name__
+    return {
+        'current_view': "%s.%s" % (name, stack()[1][3]),
+    }
+
 
 def GetMenu(currentview):
     content = open('codevaldapp/static/codevaldapp/assets/content/menu.html', 'r+')
@@ -26,7 +40,7 @@ def index(request):
     t = Template(content.read())
     c = Context({})
     content.close()
-    html = t.render(c)	
+    html = t.render(c)
     return render(request, 'codevaldapp/template.html', {"title": "CodeVald : Home", "pagetitle": "CodeVald", "pagesubtitle": "XML + Template = (formative) Code", "menu": menu, "content": html})
 
 
@@ -64,7 +78,6 @@ def ConvertMySQLToXML(request):
         content.close()
         html = t.render(c)
 
-
         return render_to_response('codevaldapp/template_form.html', {"title": "CodeVald : Convert SQL", "action": "codevaldapp:MySQLToXML", "pagetitle": "Generate XML", "pagesubtitle": "MySQL to XML", "CurrPage": "Generate XML", "menu": menu, "content": html}, context_instance=RequestContext(request))
     else:
         content = open('codevaldapp/static/codevaldapp/assets/content/MySQLToXML.html', 'r+')
@@ -81,6 +94,7 @@ def ConvertMySQLToXML(request):
 def GenerateCode(request):
     menu = GetMenu("codevaldapp:GenerateCode")
     strPath = os.path.dirname(__file__)+"/../datamodels/"
+    messageclass = "msgsuccess"
     if request.method == "POST":
         message = ""
         try:
@@ -104,11 +118,12 @@ def GenerateCode(request):
             code = ""
             for each_code in codelist:
                 code = code + each_code
+            messageclass = "msgsuccess"
             message = "Process Complete!"
 
         content = open('codevaldapp/static/codevaldapp/assets/content/GenerateCode.html', 'r+')
         t = Template(content.read())
-        c = Context({"activetab": "Code", "XML": XML, "CodeTemplate": CodeTemplate, "NewCode": code, "message": message})
+        c = Context({"activetab": "Code", "XML": XML, "CodeTemplate": CodeTemplate, "NewCode": code, "message": message, "messageclass": messageclass})
         content.close()
         html = t.render(c)
 
