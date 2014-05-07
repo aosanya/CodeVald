@@ -5,14 +5,14 @@ from codevald_generators.ReadXML import ReadXML
 from codevald_generators.CodeGenerator import GenerateCode
 from codevald_generators.entity import entity
 
-strPath = os.path.dirname(__file__)+"/../datamodels/"
+strPath = os.path.dirname(__file__) + "/../codevaldapp/data/"
 
-filename = strPath + "xml2.txt"
+filename = strPath + "samplexml.xml"
 
 o_XMLPlain = open(filename).read()
 o_XML = ReadXML(o_XMLPlain)
 
-template = strPath + "template2.txt"
+template = strPath + "sampletemplate.txt"
 o_template = open(template).read()
 
 o_GenerateCode = GenerateCode(o_template)
@@ -20,13 +20,15 @@ pycode = o_GenerateCode.pycodegenerator
 codelist = []
 #print(pycode)
 
-filename = strPath + "codetorun4.txt"
+filename = strPath + "codetorun.txt"
 
 f = open(filename, "w")
 f.write(pycode)
 f.close()
 
 filename = strPath + "code.txt"
+
+
 
 
 exec(pycode)

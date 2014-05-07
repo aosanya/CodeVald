@@ -93,7 +93,6 @@ def ConvertMySQLToXML(request):
 
 def GenerateCode(request):
     menu = GetMenu("codevaldapp:GenerateCode")
-    strPath = os.path.dirname(__file__)+"/../datamodels/"
     messageclass = "msgsuccess"
     if request.method == "POST":
         message = ""
@@ -112,10 +111,17 @@ def GenerateCode(request):
             pycodegenerator = o_GenerateCode.pycodegenerator
             codelist = []
 
-            exec(pycodegenerator)
+            #strPath = os.path.dirname(__file__)+"/../data/"
+            #filename = 'codevaldapp/data/codetorun11.txt'
+            #f = open(filename, "w")
+            #f.write(pycodegenerator)
+            #f.close()
 
-            #CodeTemplate = highlighter.highlighter(CodeTemplate).highlight()
             code = ""
+            #pycodegenerator = open('codevaldapp/data/codetorun.txt', 'r+')
+            #pycodegenerator = pycodegenerator.read()
+
+            exec(pycodegenerator.replace('\r', ''))
             for each_code in codelist:
                 code = code + each_code
             messageclass = "msgsuccess"

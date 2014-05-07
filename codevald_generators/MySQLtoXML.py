@@ -7,11 +7,9 @@ class MySQLtoXML:
     def __init__(self, a_script):
         self.script = a_script
 
-
     def openfile(self, filename):
         s = open(filename).read()
         return s
-
 
     def writefile(self, filename, data):
         f = open(filename, 'w')
@@ -19,11 +17,9 @@ class MySQLtoXML:
         f.flush()
         f.close()
 
-
     def add_standard_code(self, data):
         data = '<?xml version="1.0" encoding="UTF-8"?>\n' + data
         return data
-
 
     def closetables(self, data):
         instances = stringoperations.string_instance(data, "<entity")
@@ -32,7 +28,6 @@ class MySQLtoXML:
             table_close = (self.find_closingbracket(data, each_instance))
             data = stringoperations.replacephrase(data, ")", "\n</entity>", table_close, 0)
         return data
-
 
     def clear_inter_entity(self, data):
         table_opens = stringoperations.string_instance(data, "<entity")
@@ -51,7 +46,6 @@ class MySQLtoXML:
                     data = stringoperations.add_string(data, "\n-->\n", next_entity)
         return data
 
-
     def settable_properties(self, data):
         instances = stringoperations.string_instance(data, "<entity")
         instances.sort()
@@ -67,7 +61,6 @@ class MySQLtoXML:
                 data = stringoperations.replacephrase(data, ">", newtable_properties + " >", entity_start, 0)
         return data
 
-
     def settable_schema(self, data):
         instances = stringoperations.string_instance(data, "<entity")
         instances.sort()
@@ -76,12 +69,11 @@ class MySQLtoXML:
             entity_name = data[each_instance+len("<entity"):entity_start_end].strip()
             entity_name_split = entity_name.split(".")
             if len(entity_name_split) == 2:
-                data = stringoperations.replacephrase(data, entity_name, "schema=" + entity_name_split[0].replace('`', '') + " name=" + entity_name_split[1].replace('`', ''), each_instance, 0)
+                data = stringoperations.replacephrase(data, entity_name, "schema='" + entity_name_split[0].replace('`', '') + "' name=" + entity_name_split[1].replace('`', ''), each_instance, 0)
             else:
-                data = stringoperations.replacephrase(data, entity_name, "name=" + entity_name.replace('`', ''), each_instance, 0)
+                data = stringoperations.replacephrase(data, entity_name, "name=" + entity_name.replace('`', '') + "'", each_instance, 0)
 
         return data
-
 
     def setcolumn_properties(self, data):
         instances = stringoperations.string_instance(data, "<entity")
@@ -98,7 +90,6 @@ class MySQLtoXML:
                 data = stringoperations.replacephrase(data, oldproperties, new_properties + "\n", entity_start, 1)
         return data
 
-
     def setproperty_name(self, data):
         instances = stringoperations.string_instance(data, "<property ")
         instances.sort()
@@ -108,9 +99,8 @@ class MySQLtoXML:
                 property_name = data[each_instance + len("<property "):property_name_end]
                 new_property_name = property_name
                 new_property_name = new_property_name.replace("`", "")
-                data = stringoperations.replacephrase(data, property_name, "name=" + new_property_name.strip() + " ", each_instance, 1)
+                data = stringoperations.replacephrase(data, property_name, "name='" + new_property_name.strip() + "' ", each_instance, 1)
         return data
-
 
     def setprimarykeys_properties(self, data):
         instances = stringoperations.string_instance(data, "<property PRIMARY KEY")
@@ -127,7 +117,6 @@ class MySQLtoXML:
                 data = stringoperations.replacephrase(data, "<property PRIMARY KEY", "<primarykey ", each_instance, 1)
                 data = stringoperations.replacephrase(data, "</property>", "</primarykey>", each_instance, 1)
         return data
-
 
     def setindices_properties(self, data):
         instances = stringoperations.string_instance(data, "<property INDEX")
@@ -146,7 +135,6 @@ class MySQLtoXML:
                 data = stringoperations.replacephrase(data, "</property>", "</index>", each_instance, 1)
         return data
 
-
     def setconstraint_properties(self, data):
         instances = stringoperations.string_instance(data, "<property CONSTRAINT")
         instances.sort()
@@ -164,10 +152,8 @@ class MySQLtoXML:
                 data = stringoperations.replacephrase(data, "</property>", "</constraint>", each_instance, 1)
         return data
 
-
     def getpropertytab(self):
         return "".ljust(1, '\t')
-
 
     def comment_info(self, data):
         instances = stringoperations.string_instance(data, "SET @")
@@ -177,7 +163,6 @@ class MySQLtoXML:
             set_end = data.index(";", each_instance)
             data = stringoperations.add_string(data, "-->", set_end+1)
         return data
-
 
     def setdefaults(self, data):
         instances = stringoperations.string_instance(data, " DEFAULT ")
@@ -191,7 +176,6 @@ class MySQLtoXML:
                 default_val = stringoperations.getnonstring(data, default_start)
             data = stringoperations.replacephrase(data, "DEFAULT " + default_val, "default=" + default_val, each_instance, 0)
         return data
-
 
     def IsString(self, data, curr_pos):
         try:
@@ -214,7 +198,6 @@ class MySQLtoXML:
 
         return False
 
-
     def setprecision(self, data):
         datatypes = ["VARCHAR"]
         for each_datatype in datatypes:
@@ -224,10 +207,9 @@ class MySQLtoXML:
                 if precision != "":
                     data = stringoperations.replacephrase(data, ")", "", each_instance, 1)
                     data = stringoperations.replacephrase(data, precision, "", each_instance, 1)
-                    data = stringoperations.replacephrase(data, "(", " precision=" + precision, each_instance, 1)
+                    data = stringoperations.replacephrase(data, "(", " precision='" + precision + "'", each_instance, 1)
 
         return data
-
 
     def getprecision(self, data, datatype, beg):
         try:
@@ -247,13 +229,11 @@ class MySQLtoXML:
         else:
             return ""
 
-
     def SetDataTypes(self, data):
         datatypes = ["SMALLINT", "INT", "VARCHAR", "TINYINT", "BLOB", "TIMESTAMP"]
         for each_datatype in datatypes:
-            data = stringoperations.replacephrase(data, " " + each_datatype, " type=" + each_datatype.lower(), 0)
+            data = stringoperations.replacephrase(data, " " + each_datatype, " type='" + each_datatype.lower() + "'", 0)
         return data
-
 
     def find_closingbracket(self, data, beg):
         open_count = 0
@@ -301,7 +281,6 @@ class MySQLtoXML:
             except:
                 return -1
 
-
     def GetXML(self):
         xml = self.script
         xml = stringoperations.inplace_change(xml, "\n\n\n", "\n\n")
@@ -310,14 +289,14 @@ class MySQLtoXML:
         xml = stringoperations.inplace_change(xml, "  ", " ")
         xml = stringoperations.inplace_change(xml, "CREATE TABLE", "<entity")
         xml = stringoperations.inplace_change(xml, "IF NOT EXISTS", "")
-        xml = stringoperations.inplace_change(xml, "NOT NULL", "nullable=false")
+        xml = stringoperations.inplace_change(xml, "NOT NULL", "nullable='false'")
         #set the defaults
         #xml = inplace_change(xml, "DEFAULT NULL", "default=null")
         #xml = inplace_change(xml, "AUTO_INCREMENT", "default=CURRENT_TIMESTAMP")
 
-        xml = stringoperations.inplace_change(xml, " NULL ", " nullable=true ")
-        xml = stringoperations.inplace_change(xml, "UNSIGNED", "unsigned=false")
-        xml = stringoperations.inplace_change(xml, "AUTO_INCREMENT", "auto_increment=true")
+        xml = stringoperations.inplace_change(xml, " NULL ", " nullable='true' ")
+        xml = stringoperations.inplace_change(xml, "UNSIGNED", "unsigned='false'")
+        xml = stringoperations.inplace_change(xml, "AUTO_INCREMENT", "auto_increment='true'")
 
         xml = self.closetables(xml)
         xml = self.settable_properties(xml)
@@ -347,9 +326,4 @@ class MySQLtoXML:
 
         xml = self.comment_info(xml)
 
-        #
         return xml
-
-
-        return "oi"
-        #return xml
