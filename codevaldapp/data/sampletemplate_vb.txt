@@ -1,0 +1,11 @@
+#objects = [entity,property]
+<entity>
+	
+      Get<entity.name/>ByCategoryID(ByVal categoryID As Integer) As Sakila.<entity.name/>DataTable
+        .Get<entity.name/>ByCategoryID(categoryID)
+
+      
+
+      AddProduct(<property>ByVal <property.name/> As <property.type/>,</property>) As Boolean
+
+</entity>

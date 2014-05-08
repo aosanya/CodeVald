@@ -12,7 +12,7 @@ filename = strPath + "samplexml.xml"
 o_XMLPlain = open(filename).read()
 o_XML = ReadXML(o_XMLPlain)
 
-template = strPath + "sampletemplate.txt"
+template = strPath + "sampletemplate_vb.txt"
 o_template = open(template).read()
 
 o_GenerateCode = GenerateCode(o_template)
@@ -27,8 +27,6 @@ f.write(pycode)
 f.close()
 
 filename = strPath + "code.txt"
-
-
 
 
 exec(pycode)

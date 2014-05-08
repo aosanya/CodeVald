@@ -1,21 +1,0 @@
-
-
-codelist.append('\n')
-for each_entity in o_XML.entities('entity'):
-    entityXML = ReadXML.ReadXML(each_entity, True)
-    o_XML = entityXML
-    
-    codelist.append('\nclass ' + entityXML.entityproperty('name') + '(models.Model):')
-    codelist.append('\n	')
-    for each_property in o_XML.entities('property'):
-        propertyXML = ReadXML.ReadXML(each_property, True)
-        o_XML = propertyXML
-        
-        codelist.append('\n      ' + propertyXML.entityproperty('name') + ' = models.' + propertyXML.entityproperty('type') + '')
-        codelist.append('\n(max_length= if propertyXML.entityproperty('precision/'))'  if propertyXML.entityproperty('precision') != "<#Error#>" else "")
-        codelist.append('\n')
-        
-    codelist.append('\n	')
-    codelist.append('\n	def __str__(self): # __unicode__ on Python 2 return self.name')
-    codelist.append('\n	')
-codelist.append('\n')

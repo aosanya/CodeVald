@@ -135,14 +135,24 @@ def GenerateCode(request):
 
         return render_to_response('codevaldapp/template_form.html', {"title": "CodeVald : GenerateCode", "action": "codevaldapp:GenerateCode", "pagetitle": "Generate Code", "pagesubtitle": "XML + Template = (formative) Code", "CurrPage": "Generate Code", "menu": menu, "content": html}, context_instance=RequestContext(request))
     else:
+
         content = open('codevaldapp/static/codevaldapp/assets/content/GenerateCode.html', 'r+')
         sampleXML = open('codevaldapp/data/samplexml.xml', 'r+')
         sampleXML = sampleXML.read()
         sampleXML = sampleXML.__str__()
 
-        sampleTemplate = open('codevaldapp/data/sampletemplate.txt', 'r+')
-        sampleTemplate = sampleTemplate.read()
-        sampleTemplate = sampleTemplate.__str__()
+        sample = request.GET.get('sample')
+        if sample != '':
+            try:
+                sampleTemplate = open('codevaldapp/data/sampletemplate_' + sample + '.txt', 'r+')
+            except:
+                sampleTemplate = open('codevaldapp/data/sampletemplate_django.txt', 'r+')
+            sampleTemplate = sampleTemplate.read()
+            sampleTemplate = sampleTemplate.__str__()
+        else:
+            sampleTemplate = open('codevaldapp/data/sampletemplate_django.txt', 'r+')
+            sampleTemplate = sampleTemplate.read()
+            sampleTemplate = sampleTemplate.__str__()
 
         t = Template(content.read())
         c = Context({"activetab": "XML", "XML": sampleXML, "CodeTemplate": sampleTemplate, 'NewCode': ""})

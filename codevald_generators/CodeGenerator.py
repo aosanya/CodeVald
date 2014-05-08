@@ -13,6 +13,9 @@ import textwrap
 strCodeLine = "@$@!#%#@@!!!!2"
 strPyLine = "@$@!#%#@@!!!!3"
 strNoCloseQuote = "@$@!#%#@@!!!!4"
+strPreviousQuote = "@$@!#%#@@!!!!5"
+
+
 class GenerateCode:
     def __init__(self, a_template):
         self.template = a_template
@@ -150,14 +153,37 @@ class GenerateCode:
 
     def set_entityproperties(self, looptag):
         instances = stringoperations.string_instance(self.code, "<" + looptag + ".", )
+
         for each_instance in reversed(instances):
             tag_close = stringoperations.string_oneinstance(self.code, "/>", each_instance)
             oldcode = self.code[each_instance:tag_close + 2]
             if oldcode != "":
-                newcode = oldcode.strip()
-                newcode = newcode.replace("<" + looptag + ".", looptag + "XML.entityproperty('")
-                newcode = newcode.replace("/>", "')")
-                self.code = self.code.replace(oldcode, "' + " +  newcode + " + '")
+                if self.IsProperty(oldcode):
+                    newcode = oldcode.strip()
+                    newcode = newcode.replace("<" + looptag + ".", looptag + "XML.entityproperty('")
+                    newcode = newcode.replace("/>", "')")
+                    #self.code = self.code.replace(oldcode, "' + " +  newcode + " + '")
+                    self.code = stringoperations.replacephrase(self.code, oldcode, "' + " +  newcode + " + '", each_instance, 1)
+
+    def IsProperty(self, tag):
+        temp = tag
+        if temp[:1] != "<":
+            return False
+
+        if temp[-2:] != "/>":
+            return False
+
+        tempfound = False
+        knowntags = []
+
+        for each_object in self.codeobjects:
+            knowntags.append("<" + each_object)
+
+        if not stringoperations.startswith(tag.lstrip(" "), knowntags):
+            return False
+
+        return True
+
 
     #def set_property_sub(self):
     #    self.code = self.code.replace("<property.type\>", "\' + each_property.entityproperty('type') + \'")
@@ -191,12 +217,15 @@ class GenerateCode:
             newcode = newcode.replace(each_tag, strPyLine + each_tag + strPyLine)
             newcode = newcode.replace(strPyLine + strPyLine + each_tag, strPyLine + each_tag)
             newcode = newcode.replace(each_tag + strPyLine + strPyLine, each_tag + strPyLine)
+
+        newcode = newcode.replace("\'", strPreviousQuote)
         self.code = newcode
 
     def clean_up2(self):
         newcode = self.code
         newcode = newcode.replace(strPyLine, "\n")
         newcode = newcode.replace(strCodeLine, "\\n")
+        newcode = newcode.replace(strPreviousQuote, "\\'")
         self.code = newcode
 
     def createpylines(self):
@@ -254,8 +283,9 @@ class GenerateCode:
         for each_line in newcodelist:
 
             if not stringoperations.startswith(each_line.lstrip(" "), checkloops):
-
-                if not stringoperations.startswith(each_line.lstrip(" "), strNoCloseQuote):
+                NoClose = []
+                NoClose.append(strNoCloseQuote)
+                if not stringoperations.startswith(each_line.lstrip(" "), NoClose):
                     tempcode =  "codelist.append('" + strCodeLine + "<code>')"
 
                     tempcode = tempcode.replace("<code>", each_line.rstrip('\n'))

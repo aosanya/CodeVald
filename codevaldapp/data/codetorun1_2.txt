@@ -1,22 +1,0 @@
-
-#objects = [entity,property]for each_entity in o_XML.entities('entity'):
-    entityXML = ReadXML.ReadXML(each_entity, True)
-    o_XML = entityXML
-    
-    codelist.append('@$@!#%#@@!!!!2')
-    codelist.append('@$@!#%#@@!!!!2class ' + entityXML.entityproperty('name') + '(models.Model):')
-    codelist.append('@$@!#%#@@!!!!2      ')
-    for each_property in o_XML.entities('property'):
-        propertyXML = ReadXML.ReadXML(each_property, True)
-        o_XML = propertyXML
-        
-        codelist.append('@$@!#%#@@!!!!2      ' + propertyXML.entityproperty('name') + ' = models.' + propertyXML.entityproperty('type') + '')
-        codelist.append('(max_length=' + propertyXML.entityproperty('precision') + ')'  if propertyXML.entityproperty('precision') != "<#Error#>" else "")
-        
-    codelist.append('@$@!#%#@@!!!!2')
-    codelist.append('@$@!#%#@@!!!!2')
-    codelist.append('@$@!#%#@@!!!!2	')
-    codelist.append('@$@!#%#@@!!!!2	def __str__(self): # __unicode__ on Python 2 return self.name')
-    codelist.append('@$@!#%#@@!!!!2	')
-codelist.append('@$@!#%#@@!!!!2')
-codelist.append('@$@!#%#@@!!!!2')
