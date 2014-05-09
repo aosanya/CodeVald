@@ -4,9 +4,11 @@
 	<property name="first_name" type="varchar" precision="45" nullable="false"></property>
 	<property name="last_name" type="varchar" precision="45" nullable="false"></property>
 	<property name="last_update" type="timestamp" nullable="false" default="CURRENT_TIMESTAMP"></property>
+	<primarykey>actor_id</primarykey>
 </entity>
 <entity  schema="sakila" name="country">
 	<property name="country_id" type="smallint" unsigned="false" nullable="false" auto_increment="true"></property>
 	<property name="country" type="varchar" precision="50" nullable="false"></property>
 	<property name="last_update" type="timestamp" nullable="false" default="CURRENT_TIMESTAMP"></property>
+	<primarykey>country_id</primarykey>
 </entity>

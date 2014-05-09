@@ -112,13 +112,14 @@ class MySQLtoXML:
                 new_primarykey = data[each_instance + len("<property PRIMARY KEY"):property_close]
                 new_primarykey = new_primarykey.replace("(", "")
                 new_primarykey = new_primarykey.replace(")", "")
+                new_primarykey = new_primarykey.replace(">", "")
                 new_primarykey = new_primarykey.replace("`", "")
-                data = stringoperations.replacephrase(data, primarykey, new_primarykey.strip(), each_instance, 1)
+                data = stringoperations.replacephrase(data, primarykey, "column=\'" + new_primarykey.strip() + "\'", each_instance, 1)
                 data = stringoperations.replacephrase(data, "<property PRIMARY KEY", "<primarykey ", each_instance, 1)
                 data = stringoperations.replacephrase(data, "</property>", "</primarykey>", each_instance, 1)
         return data
 
-    def setindices_properties(self, data):
+    def setindices(self, data):
         instances = stringoperations.string_instance(data, "<property INDEX")
         instances.sort()
         for each_instance in reversed(instances):
@@ -129,10 +130,55 @@ class MySQLtoXML:
                     index_name = data[each_instance + len("<property INDEX"):index_name_end]
                     new_index_name = index_name
                     new_index_name = new_index_name.replace("`", "")
-                    data = stringoperations.replacephrase(data, index_name, "name=" + new_index_name.strip() + " ", each_instance, 1)
+
+                    data = stringoperations.replacephrase(data, index_name, "name=\'" + new_index_name.strip() + "\' ", each_instance, 1)
 
                 data = stringoperations.replacephrase(data, "<property INDEX", "<index ", each_instance, 1)
                 data = stringoperations.replacephrase(data, "</property>", "</index>", each_instance, 1)
+
+        data = self.setindices_column(data)
+
+        return data
+
+    def setindices_column(self, data):
+        instances = stringoperations.string_instance(data, "<index")
+        instances.sort()
+        for each_instance in reversed(instances):
+            property_close = stringoperations.string_oneinstance(data, "</index>", each_instance)
+            if property_close != -1:
+                index_column_start = stringoperations.string_oneinstance(data, "(", each_instance)
+                index_name_end = stringoperations.string_oneinstance(data, ")", each_instance)
+                if index_column_start != -1 and index_name_end != -1 and index_column_start < property_close and index_name_end < property_close:
+                    index_name = data[index_column_start:index_name_end + 1]
+                    new_index_name = index_name
+                    new_index_name = new_index_name.replace(" ASC)", " order='ASC')")
+                    new_index_name = new_index_name.replace(" DESC)", " order='DESC')")
+                    new_index_name = new_index_name.replace(")", "")
+                    new_index_name = new_index_name.replace("(", "")
+                    new_index_name = new_index_name.replace("`", "")
+
+                    data = stringoperations.replacephrase(data, index_name, "column=" + new_index_name.strip(), each_instance, 1)
+
+
+        return data
+
+    def covert(self, data, search_start, search_end, subsearch_start, subsearch_end, newname, substart_replace = "", subend_replace = ""):
+        instances = stringoperations.string_instance(data, search_start)
+        instances.sort()
+        for each_instance in reversed(instances):
+            property_close = stringoperations.string_oneinstance(data, search_end, each_instance)
+            if property_close != -1:
+                index_column_start = stringoperations.string_oneinstance(data, subsearch_start, each_instance)
+                index_name_end = stringoperations.string_oneinstance(data, subsearch_end, each_instance)
+                if index_column_start != -1 and index_name_end != -1 and index_column_start < property_close and index_name_end < property_close:
+                    index_name = data[index_column_start:index_name_end + 1]
+                    new_index_name = index_name
+                    new_index_name = new_index_name.replace(subsearch_start, substart_replace)
+                    new_index_name = new_index_name.replace(subsearch_end, subend_replace)
+                    new_index_name = new_index_name.replace("`", "'")
+
+                    data = stringoperations.replacephrase(data, index_name,  newname + "=" + new_index_name.strip(), each_instance, 1)
+
         return data
 
     def setconstraint_properties(self, data):
@@ -145,11 +191,17 @@ class MySQLtoXML:
                 if index_name_end != -1:
                     constraint_name = data[each_instance + len("<property CONSTRAINT"):index_name_end]
                     new_constraint_name = constraint_name
-                    new_constraint_name = new_constraint_name.replace("`", "")
+                    new_constraint_name = new_constraint_name.replace("`", "'")
                     data = stringoperations.replacephrase(data, constraint_name, "name=" + new_constraint_name.strip() + " ", each_instance, 1)
 
-                data = stringoperations.replacephrase(data, "<property CONSTRAINT", "<constraint>", each_instance, 1)
+                data = stringoperations.replacephrase(data, "<property CONSTRAINT", "<constraint ", each_instance, 1)
                 data = stringoperations.replacephrase(data, "</property>", "</constraint>", each_instance, 1)
+
+        data = data.replace("ON DELETE RESTRICT", "ondelete='restrict'")
+        data = data.replace("ON DELETE CASCADE", "ondelete='cascade'")
+        data = data.replace("ON UPDATE CASCADE", "onupdate='cascade'")
+        data = data.replace("ON UPDATE CASCADE", "onupdate='cascade'")
+
         return data
 
     def getpropertytab(self):
@@ -317,7 +369,12 @@ class MySQLtoXML:
         xml = self.setprimarykeys_properties(xml)
 
         xml = self.setconstraint_properties(xml)
-        xml = self.setindices_properties(xml)
+        xml = self.setindices(xml)
+        xml = self.covert(xml, "<constraint ", "</constraint>", "FOREIGN KEY (", ")", "columns")
+        xml = self.covert(xml, "REFERENCES ", "</constraint>", "(", ")", "  cols_referenced")
+        xml = self.covert(xml, "REFERENCES ", "</constraint>", "REFERENCES ", " ", "schema_referenced")
+        xml = self.covert(xml, "schema_referenced", "</constraint>", "schema_referenced=", " ", "schema_referenced")
+        xml = self.covert(xml, "schema_referenced", "</constraint>", ".", " ", " tbl_referenced")
 
         xml = self.setproperty_name(xml)
         #xml = stringoperations.inplace_change(xml, "\nENGINE=InnoDB\n", " ENGINE=InnoDB ")

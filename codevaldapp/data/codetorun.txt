@@ -6,8 +6,8 @@ for each_entity in o_XML.entities('entity'):
     o_XML = entityXML
     
     codelist.append('\n	')
-    codelist.append('\n      GetentityXML.entityproperty('name')ByCategoryID(ByVal categoryID As Integer) As Sakila.entityXML.entityproperty('name')DataTable')
-    codelist.append('\n        .GetentityXML.entityproperty('name')ByCategoryID(categoryID)')
+    codelist.append('\n      Get' + entityXML.entityproperty('name') + 'ByCategoryID(ByVal categoryID As Integer) As Sakila.' + entityXML.entityproperty('name') + 'DataTable')
+    codelist.append('\n        .Get' + entityXML.entityproperty('name') + 'ByCategoryID(categoryID)')
     codelist.append('\n')
     codelist.append('\n      ')
     codelist.append('\n')
@@ -16,5 +16,5 @@ for each_entity in o_XML.entities('entity'):
         propertyXML = ReadXML.ReadXML(each_property, True) 
         o_XML = propertyXML
         
-        codelist.append('\nByVal propertyXML.entityproperty('name') As propertyXML.entityproperty('type'),) As Boolean')
+        codelist.append('\nByVal ' + propertyXML.entityproperty('name') + ' As ' + propertyXML.entityproperty('type') + ',) As Boolean')
     codelist.append('\n')
