@@ -1,0 +1,14 @@
+#<object name="entity"/>
+#<object name="property"/>
+#<object name="primarykey"/>
+#<object name="column"/>
+#<object name="index"/>
+#<link left="entity.property.name" right="entity.primarykey.column.name" type="extension"/>
+#<mapper object="property" property="type" from="smallint" to="integer"/>
+#<mapper object="property" property="type" from="TINYINT" to="integer"/>
+#<mapper object="property" property="type" from="CHAR" to="string"/>
+#<mapper object="property" property="type" from="timestamp" to="datetime"/>
+
+<entity>
+Public Function Add<entity.name/>(<property>ByVal <property.name/> As <property.type/></property>) As Boolean
+</entity>

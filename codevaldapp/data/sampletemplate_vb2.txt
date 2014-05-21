@@ -1,4 +1,9 @@
-#objects = [entity,property]
+#<object name="entity"/>
+#<object name="property"/>
+#<object name="primarykey"/>
+#<object name="column"/>
+#<object name="index"/>
+#<link left="entity.property.name" right="entity.primarykey.column.name" type="extension"/>
 
 Imports SakilaTableAdapters
 
@@ -22,41 +27,27 @@ Public Class <entity.name/>BLL
     Public Function Get<entity.name/>() As Sakila.<entity.name/>DataTable
         Return Adapter.Get<entity.name/>()
     End Function
-
+	
+	<primarykey.column>
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, False)> _
-    Public Function GetProductByProductID(ByVal productID As Integer) As Sakila.<entity.name/>DataTable
-        Return Adapter.GetProductByProductID(productID)
+    Public Function Get<entity.name/>By<column.name/>(ByVal <column.name/> As Integer) As Sakila.<entity.name/>DataTable
+        Return Adapter.Get<entity.name/>By<column.name/>(<column.name/>)
     End Function
+	</primarykey.column>
 
-    <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, False)> _
-    Public Function Get<entity.name/>ByCategoryID(ByVal categoryID As Integer) As Sakila.<entity.name/>DataTable
-        Return Adapter.Get<entity.name/>ByCategoryID(categoryID)
-    End Function
-
-    <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, False)> _
-    Public Function Get<entity.name/>BySupplierID(ByVal supplierID As Integer) As Sakila.<entity.name/>DataTable
-        Return Adapter.Get<entity.name/>BySupplierID(supplierID)
-    End Function
-
-
-        <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, True)> _
-    Public Function AddProduct(<property>ByVal <property.name/> As <property.type/>,</property>) As Boolean
-        ' Create a new ProductRow instance
+    <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, True)> _
+    Public Function Add<entity.name/>(<property>ByVal <property.name/> As <property.type/>,</property>) As Boolean
+        ' Create a new <entity.name/>Row instance
         Dim <entity.name/> As New Sakila.<entity.name/>DataTable()
-        Dim product As Sakila.<entity.name/>Row = <entity.name/>.New<entity.name/>Row()
-
-        product.ProductName = productName
-        If Not supplierID.HasValue Then product.SetSupplierIDNull() Else product.SupplierID = supplierID.Value
-        If Not categoryID.HasValue Then product.SetCategoryIDNull() Else product.CategoryID = categoryID.Value
-        If quantityPerUnit Is Nothing Then product.SetQuantityPerUnitNull() Else product.QuantityPerUnit = quantityPerUnit
-        If Not unitPrice.HasValue Then product.SetUnitPriceNull() Else product.UnitPrice = unitPrice.Value
-        If Not unitsInStock.HasValue Then product.SetUnitsInStockNull() Else product.UnitsInStock = unitsInStock.Value
-        If Not unitsOnOrder.HasValue Then product.SetUnitsOnOrderNull() Else product.UnitsOnOrder = unitsOnOrder.Value
-        If Not reorderLevel.HasValue Then product.SetReorderLevelNull() Else product.ReorderLevel = reorderLevel.Value
-        product.Discontinued = discontinued
-
-        ' Add the new product
-        <entity.name/>.Add<entity.name/>Row(product)
+        Dim <entity.name/> As Sakila.<entity.name/>Row = <entity.name/>.New<entity.name/>Row()
+		<property>
+        <entity.name/>.<property.name/> = <property.name/>
+        </property>
+        
+        'If Not supplierID.HasValue Then <entity.name/>.SetSupplierIDNull() Else <entity.name/>.SupplierID = supplierID.Value
+        
+        ' Add the new <entity.name/>
+        <entity.name/>.Add<entity.name/>Row(<entity.name/>)
         Dim rowsAffected As Integer = Adapter.Update(<entity.name/>)
 
         ' Return true if precisely one row was inserted, otherwise false
@@ -64,11 +55,8 @@ Public Class <entity.name/>BLL
     End Function
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Update, True)> _
-    Public Function UpdateProduct(ByVal productName As String, ByVal supplierID As Nullable(Of Integer), ByVal categoryID As Nullable(Of Integer), _
-                                    ByVal quantityPerUnit As String, ByVal unitPrice As Nullable(Of Decimal), ByVal unitsInStock As Nullable(Of Short), _
-                                    ByVal unitsOnOrder As Nullable(Of Short), ByVal reorderLevel As Nullable(Of Short), _
-                                    ByVal discontinued As Boolean, ByVal productID As Integer) As Boolean
-        Dim <entity.name/> As Sakila.<entity.name/>DataTable = Adapter.GetProductByProductID(productID)
+    Public Function Update<entity.name/>(<property>ByVal <property.name/> As <property.type/>,</property>) As Boolean
+        Dim <entity.name/> As Sakila.<entity.name/>DataTable = Adapter.Get<entity.name/>ByPrimaryKey(productID)
 
         If <entity.name/>.Count = 0 Then
             ' no matching record found, return false
@@ -79,7 +67,7 @@ Public Class <entity.name/>BLL
 			<entity.name/>.<property.name/> = <property.name/>
 		</property>
         
-        ' Update the product record
+        ' Update the <entity.name/> record
         Dim rowsAffected As Integer = Adapter.Update(product)
 
         ' Return true if precisely one row was updated, otherwise false
@@ -87,7 +75,7 @@ Public Class <entity.name/>BLL
     End Function
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Delete, True)> _
-    Public Function DeleteProduct(ByVal productID As Integer) As Boolean
+    Public Function Delete<entity.name/>(<primarykey.column>ByVal <column.name/> As Integer</primarykey.column>) As Boolean
         Dim rowsAffected As Integer = Adapter.Delete(productID)
 
         ' Return true if precisely one row was deleted, otherwise false

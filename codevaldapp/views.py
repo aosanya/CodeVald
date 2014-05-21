@@ -104,10 +104,11 @@ def GenerateCode(request):
             CodeTemplate = ""
 
         if XML != "" and CodeTemplate != "":
-            o_XML = ReadXML.ReadXML(XML)
+
             o_template = CodeTemplate
 
             o_GenerateCode = CodeGenerator.GenerateCode(o_template)
+            o_XML = ReadXML.ReadXML(XML, [], "", False, o_GenerateCode.getmappers())
             pycodegenerator = o_GenerateCode.pycodegenerator
             codelist = []
 

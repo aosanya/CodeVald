@@ -1,20 +1,126 @@
 
 
-
+codelist.append('')
+codelist.append('')
+codelist.append('')
+codelist.append('')
+codelist.append('')
+codelist.append('')
+codelist.append('')
+codelist.append('')
+codelist.append('')
+codelist.append('')
+codelist.append('\n')
+codelist.append('\n')
+codelist.append('\n')
+entityindex = 0
+entitycount = len(o_XML.entities('entity'))
 for each_entity in o_XML.entities('entity'):
-    entityXML = ReadXML.ReadXML(each_entity, True) 
+    entityXML = ReadXML.ReadXML(each_entity, o_GenerateCode.codeobjects, o_GenerateCode.links, True, o_GenerateCode.getmappers()) 
     o_XML = entityXML
     
+    codelist.append('')
+    codelist.append('\n<System.ComponentModel.DataObject()> _')
+    codelist.append('\nPublic Class ' + entityXML.entityproperty('name') + 'BLL')
+    codelist.append('\n')
+    codelist.append('\n    Private _' + entityXML.entityproperty('name') + 'Adapter As ' + entityXML.entityproperty('name') + 'TableAdapter = Nothing')
+    codelist.append('\n    Protected ReadOnly Property Adapter() As ' + entityXML.entityproperty('name') + 'TableAdapter')
+    codelist.append('\n        Get')
+    codelist.append('\n            If _' + entityXML.entityproperty('name') + 'Adapter Is Nothing Then')
+    codelist.append('\n                _' + entityXML.entityproperty('name') + 'Adapter = New ' + entityXML.entityproperty('name') + 'TableAdapter()')
+    codelist.append('\n            End If')
+    codelist.append('\n')
+    codelist.append('\n            Return _' + entityXML.entityproperty('name') + 'Adapter')
+    codelist.append('\n        End Get')
+    codelist.append('\n    End Property')
+    codelist.append('\n')
+    codelist.append('\n    <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, True)> _')
+    codelist.append('\n    Public Function Get' + entityXML.entityproperty('name') + '() As Sakila.' + entityXML.entityproperty('name') + 'DataTable')
+    codelist.append('\n        Return Adapter.Get' + entityXML.entityproperty('name') + '()')
+    codelist.append('\n    End Function')
     codelist.append('\n	')
-    codelist.append('\n      Get' + entityXML.entityproperty('name') + 'ByCategoryID(ByVal categoryID As Integer) As Sakila.' + entityXML.entityproperty('name') + 'DataTable')
-    codelist.append('\n        .Get' + entityXML.entityproperty('name') + 'ByCategoryID(categoryID)')
+    codelist.append('\n	')
+    primarykeyindex = 0
+    primarykeycount = len(o_XML.entities('primarykey'))
+    for each_primarykey in o_XML.entities('primarykey'):
+        primarykeyXML = ReadXML.ReadXML(each_primarykey, o_GenerateCode.codeobjects, o_GenerateCode.links, True, o_GenerateCode.getmappers()) 
+        o_XML = primarykeyXML
+        
+        codelist.append('')
+        columnindex = 0
+        columncount = len(o_XML.entities('column'))
+        for each_column in o_XML.entities('column'):
+            columnXML = ReadXML.ReadXML(each_column, o_GenerateCode.codeobjects, o_GenerateCode.links, True, o_GenerateCode.getmappers()) 
+            o_XML = columnXML
+            
+            codelist.append('')
+            codelist.append('\n')
+            codelist.append('\n    <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, False)> _')
+            codelist.append('\n    Public Function Get' + entityXML.entityproperty('name') + 'By' + columnXML.entityproperty('name') + '(ByVal ' + columnXML.entityproperty('name') + ' As Integer) As Sakila.' + entityXML.entityproperty('name') + 'DataTable')
+            codelist.append('\n        Return Adapter.Get' + entityXML.entityproperty('name') + 'By' + columnXML.entityproperty('name') + '(' + columnXML.entityproperty('name') + ')')
+            codelist.append('\n    End Function')
+            codelist.append('\n	')
+            
+            columnindex += 1
+            if columnindex < columncount:
+            	codelist.append('')
+            
+        
+        primarykeyindex += 1
+        if primarykeyindex < primarykeycount:
+        	codelist.append('')
+        
     codelist.append('\n')
-    codelist.append('\n      ')
-    codelist.append('\n')
-    codelist.append('\n      AddProduct(')
+    codelist.append('\n	')
+    codelist.append('\n	<System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, True)> _')
+    codelist.append('\n    Public Function Add' + entityXML.entityproperty('name') + '(')
+    propertyindex = 0
+    propertycount = len(o_XML.entities('property'))
     for each_property in o_XML.entities('property'):
-        propertyXML = ReadXML.ReadXML(each_property, True) 
+        propertyXML = ReadXML.ReadXML(each_property, o_GenerateCode.codeobjects, o_GenerateCode.links, True, o_GenerateCode.getmappers()) 
         o_XML = propertyXML
         
-        codelist.append('\nByVal ' + propertyXML.entityproperty('name') + ' As ' + propertyXML.entityproperty('type') + ',) As Boolean')
+        codelist.append('')
+        codelist.append('ByVal ' + propertyXML.entityproperty('name') + ' As ' + propertyXML.entityproperty('type') + '')
+        
+        propertyindex += 1
+        if propertyindex < propertycount:
+        	codelist.append('')
+        
     codelist.append('\n')
+    codelist.append('\n) As Boolean')
+    codelist.append('\n        \' Create a new ' + entityXML.entityproperty('name') + 'Row instance')
+    codelist.append('\n        Dim ' + entityXML.entityproperty('name') + ' As New Sakila.' + entityXML.entityproperty('name') + 'DataTable()')
+    codelist.append('\n        Dim ' + entityXML.entityproperty('name') + ' As Sakila.' + entityXML.entityproperty('name') + 'Row = ' + entityXML.entityproperty('name') + '.New' + entityXML.entityproperty('name') + 'Row()')
+    codelist.append('\n		')
+    propertyindex = 0
+    propertycount = len(o_XML.entities('property'))
+    for each_property in o_XML.entities('property'):
+        propertyXML = ReadXML.ReadXML(each_property, o_GenerateCode.codeobjects, o_GenerateCode.links, True, o_GenerateCode.getmappers()) 
+        o_XML = propertyXML
+        
+        codelist.append('')
+        codelist.append('')
+        codelist.append('\n        ' + entityXML.entityproperty('name') + '.' + propertyXML.entityproperty('name') + ' = ' + propertyXML.entityproperty('name') + '')
+        codelist.append('\n        ')
+        
+        propertyindex += 1
+        if propertyindex < propertycount:
+        	codelist.append('')
+        
+    codelist.append('\n')
+    codelist.append('\n')
+    codelist.append('\n        ')
+    codelist.append('\n        ')
+    codelist.append('\n        \' Add the new ' + entityXML.entityproperty('name') + '')
+    codelist.append('\n        ' + entityXML.entityproperty('name') + '.Add' + entityXML.entityproperty('name') + 'Row(' + entityXML.entityproperty('name') + ')')
+    codelist.append('\n        Dim rowsAffected As Integer = Adapter.Update(' + entityXML.entityproperty('name') + ')')
+    codelist.append('\n')
+    codelist.append('\n        \' Return true if precisely one row was inserted, otherwise false')
+    codelist.append('\n        Return rowsAffected = 1')
+    codelist.append('\n    End Function')
+    
+    entityindex += 1
+    if entityindex < entitycount:
+    	codelist.append('')
+codelist.append('\n')

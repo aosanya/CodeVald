@@ -1,1 +1,43 @@
-#objects = [entity,property]@$@!#%#@@!!!!3<entity>@$@!#%#@@!!!!3	@$@!#%#@@!!!!3      Get<entity.name/>ByCategoryID(ByVal categoryID As Integer) As Sakila.<entity.name/>DataTable@$@!#%#@@!!!!3        .Get<entity.name/>ByCategoryID(categoryID)@$@!#%#@@!!!!3@$@!#%#@@!!!!3      @$@!#%#@@!!!!3@$@!#%#@@!!!!3      AddProduct(@$@!#%#@@!!!!3<property>@$@!#%#@@!!!!3ByVal <property.name/> As <property.type/>,</property>) As Boolean@$@!#%#@@!!!!3@$@!#%#@@!!!!3</entity>
+#<object name="entity"/>
+#<object name="property"/>
+#<object name="primarykey"/>
+#<object name="column"/>
+#<object name="index"/>
+#<link left="entity.property.name" right="entity.primarykey.column.name" type="extension"/>
+#<mapper object="property" property="type" from="smallint" to="integer"/>
+#<mapper object="property" property="type" from="TINYINT" to="integer"/>
+#<mapper object="property" property="type" from="CHAR" to="string"/>
+#<mapper object="property" property="type" from="timestamp" to="datetime"/>
+
+<entity>
+_121@##43
+<System.ComponentModel.DataObject()> _
+Public Class <entity.name/>BLL
+
+	<System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, True)> _
+    Public Function Add<entity.name/>(
+<property separator=",">
+_121@##43ByVal <property.name/> As <property.type/>
+</property>
+) As Boolean
+        @$@!#%#@@!!!!5 Create a new <entity.name/>Row instance
+        Dim <entity.name/> As New Sakila.<entity.name/>DataTable()
+        Dim <entity.name/> As Sakila.<entity.name/>Row = <entity.name/>.New<entity.name/>Row()
+		
+<property>
+_121@##43<entity.name/>.<property.name/> = <property.name/>
+</property>
+
+        
+        @$@!#%#@@!!!!5 Add the new <entity.name/>
+        <entity.name/>.Add<entity.name/>Row(<entity.name/>)
+        Dim rowsAffected As Integer = Adapter.Update(<entity.name/>)
+
+        @$@!#%#@@!!!!5 Return true if precisely one row was inserted, otherwise false
+        Return rowsAffected = 1
+    End Function
+</entity>
+
+End Class
+
+</entity>

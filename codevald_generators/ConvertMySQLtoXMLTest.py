@@ -2,8 +2,11 @@ __author__ = 'Tony'
 
 import os
 from codevald_generators import MySQLtoXML
+from codevald_generators import stringoperations
 
 strPath = os.path.dirname(__file__) + "/../codevaldapp/data/"
+
+
 
 filename = strPath + "sakila.sql"
 

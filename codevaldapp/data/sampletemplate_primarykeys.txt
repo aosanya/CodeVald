@@ -1,0 +1,10 @@
+#<object name="entity"/>
+#<object name="property"/>
+#<object name="primarykey"/>
+#<object name="column"/>
+#<object name="index"/>
+#<link left="entity.property.name" right="entity.primarykey.column.name" type="extension"/>
+
+<primarykey.column>
+	<column.type/>
+</primarykey.column>

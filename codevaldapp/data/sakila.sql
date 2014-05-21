@@ -5,6 +5,12 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 CREATE SCHEMA IF NOT EXISTS `sakila` ;
 USE `sakila` ;
 
+CREATE TABLE `sakila`.`tbltest` (
+  `ID1` INT NOT NULL,
+  `ID2` INT NOT NULL,
+  `Col1` VARCHAR(45) NULL,
+  PRIMARY KEY (`ID1`, `ID2`));
+  
 -- -----------------------------------------------------
 -- Table `sakila`.`actor`
 -- -----------------------------------------------------

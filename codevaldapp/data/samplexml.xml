@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<entity  schema="sakila" name="actor">
-	<property name="actor_id"  type="smallint" unsigned="false" nullable="false" auto_increment="true"></property>
-	<property name="first_name" type="varchar" precision="45" nullable="false"></property>
-	<property name="last_name" type="varchar" precision="45" nullable="false"></property>
-	<property name="last_update" type="timestamp" nullable="false" default="CURRENT_TIMESTAMP"></property>
-	<primarykey>actor_id</primarykey>
+<entity default_character_set="utf8" engine="InnoDB" name="film_actor" schema="sakila">
+	<property name="actor_id" nullable="false" type="smallint" unsigned="false"></property>
+	<property name="film_id" nullable="false" type="smallint" unsigned="false"></property>
+	<property default="CURRENT_TIMESTAMP" name="last_update" nullable="false" type="timestamp"></property>
+	<primarykey>
+		<column name="actor_id"></column>
+		<column name="film_id"></column>
+	</primarykey>
+	<index name="idx_fk_film_id">
+		<column name="film_id" order="ASC"></column>
+	</index>
+	<index name="fk_film_actor_actor_idx">
+		<column name="actor_id" order="ASC"></column>
+	</index>
+	<constraint  name="fk_film_actor_actor" ondelete="restrict" onupdate="cascade" schema_referenced="sakila" tbl_referenced="actor">
+		<reference column="actor_id" referenced="actor_id"></reference>
+	</constraint>	<constraint name="fk_film_actor_film" ondelete="restrict" onupdate="cascade" schema_referenced="sakila" tbl_referenced="film">
+		<reference column="film_id" referenced="film_id"></reference>
+	</constraint>
 </entity>
-<entity  schema="sakila" name="country">
-	<property name="country_id" type="smallint" unsigned="false" nullable="false" auto_increment="true"></property>
-	<property name="country" type="varchar" precision="50" nullable="false"></property>
-	<property name="last_update" type="timestamp" nullable="false" default="CURRENT_TIMESTAMP"></property>
-	<primarykey>country_id</primarykey>
+<!--
+ ----------------------------------------------------- Table 'sakila'.'film_category' -----------------------------------------------------
+-->
+<entity default_character_set="utf8" engine="InnoDB" name="film_category" schema="sakila">
+	<property name="film_id" nullable="false" type="smallint" unsigned="false"></property>
+	<property name="category_id" nullable="false" type="tinyint" unsigned="false"></property>
+	<property default="CURRENT_TIMESTAMP" name="last_update" nullable="false" type="timestamp"></property>
+	<primarykey>
+		<column name="film_id"></column>
+		<column name="category_id"></column>
+	</primarykey>
+	<index name="fk_film_category_category_idx">
+		<column name="category_id" order="ASC"></column>
+	</index>
+	<index name="fk_film_category_film_idx">
+		<column name="film_id" order="ASC"></column>
+	</index>
+	<constraint  name="fk_film_category_film" ondelete="restrict" onupdate="cascade" schema_referenced="sakila" tbl_referenced="film">
+		<reference column="film_id" referenced="film_id"></reference>
+	</constraint>	<constraint name="fk_film_category_category" ondelete="restrict" onupdate="cascade" schema_referenced="sakila" tbl_referenced="category">
+		<reference column="category_id" referenced="category_id"></reference>
+	</constraint>
 </entity>

@@ -1,0 +1,6 @@
+
+
+smallint
+smallint
+smallint
+tinyint

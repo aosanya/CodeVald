@@ -1,1 +1,71 @@
-@$@!#%#@@!!!!3#objects = [entity,property]@$@!#%#@@!!!!3<entity>@$@!#%#@@!!!!3    entityXML = ReadXML.ReadXML(each_entity, True) @$@!#%#@@!!!!3    o_XML = entityXML@$@!#%#@@!!!!3    @$@!#%#@@!!!!3    codelist.append('@$@!#%#@@!!!!2	')@$@!#%#@@!!!!3    codelist.append('@$@!#%#@@!!!!2      Get' + entityXML.entityproperty('name') + 'ByCategoryID(ByVal categoryID As Integer) As Sakila.' + entityXML.entityproperty('name') + 'DataTable')@$@!#%#@@!!!!3    codelist.append('@$@!#%#@@!!!!2        .Get' + entityXML.entityproperty('name') + 'ByCategoryID(categoryID)')@$@!#%#@@!!!!3    codelist.append('@$@!#%#@@!!!!2')@$@!#%#@@!!!!3    codelist.append('@$@!#%#@@!!!!2      ')@$@!#%#@@!!!!3    codelist.append('@$@!#%#@@!!!!2')@$@!#%#@@!!!!3    codelist.append('@$@!#%#@@!!!!2      AddProduct(')@$@!#%#@@!!!!3    <property>@$@!#%#@@!!!!3        propertyXML = ReadXML.ReadXML(each_property, True) @$@!#%#@@!!!!3        o_XML = propertyXML@$@!#%#@@!!!!3        @$@!#%#@@!!!!3        codelist.append('@$@!#%#@@!!!!2ByVal ' + propertyXML.entityproperty('name') + ' As ' + propertyXML.entityproperty('type') + ',</property>) As Boolean')@$@!#%#@@!!!!3    codelist.append('@$@!#%#@@!!!!2')</entity>
+
+codelist.append('@$@!#%#@@!!!!2#<object name="entity"/>')
+codelist.append('@$@!#%#@@!!!!2#<object name="property"/>')
+codelist.append('@$@!#%#@@!!!!2#<object name="primarykey"/>')
+codelist.append('@$@!#%#@@!!!!2#<object name="column"/>')
+codelist.append('@$@!#%#@@!!!!2#<object name="index"/>')
+codelist.append('@$@!#%#@@!!!!2#<link left="entity.property.name" right="entity.primarykey.column.name" type="extension"/>')
+codelist.append('@$@!#%#@@!!!!2#<mapper object="property" property="type" from="smallint" to="integer"/>')
+codelist.append('@$@!#%#@@!!!!2#<mapper object="property" property="type" from="TINYINT" to="integer"/>')
+codelist.append('@$@!#%#@@!!!!2#<mapper object="property" property="type" from="CHAR" to="string"/>')
+codelist.append('@$@!#%#@@!!!!2#<mapper object="property" property="type" from="timestamp" to="datetime"/>')
+codelist.append('@$@!#%#@@!!!!2')
+entityindex = 0
+entitycount = len(o_XML.entities('entity'))
+<entity>
+    entityXML = ReadXML.ReadXML(each_entity, o_GenerateCode.codeobjects, o_GenerateCode.links, True, o_GenerateCode.getmappers()) 
+    o_XML = entityXML
+    
+    codelist.append('@$@!#%#@@!!!!2_121@##43')
+    codelist.append('@$@!#%#@@!!!!2<System.ComponentModel.DataObject()> _')
+    codelist.append('@$@!#%#@@!!!!2Public Class ' + entityXML.entityproperty('name') + 'BLL')
+    codelist.append('@$@!#%#@@!!!!2')
+    codelist.append('@$@!#%#@@!!!!2	<System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, True)> _')
+    codelist.append('@$@!#%#@@!!!!2    Public Function Add' + entityXML.entityproperty('name') + '(')
+    propertyindex = 0
+    propertycount = len(o_XML.entities('property'))
+    <property separator=",">
+        propertyXML = ReadXML.ReadXML(each_property, o_GenerateCode.codeobjects, o_GenerateCode.links, True, o_GenerateCode.getmappers()) 
+        o_XML = propertyXML
+        
+        codelist.append('@$@!#%#@@!!!!2_121@##43ByVal ' + propertyXML.entityproperty('name') + ' As ' + propertyXML.entityproperty('type') + '')
+        
+        propertyindex += 1
+        if propertyindex < propertycount:
+        	codelist.append(',')
+        </property>
+    codelist.append('@$@!#%#@@!!!!2) As Boolean')
+    codelist.append('@$@!#%#@@!!!!2        @$@!#%#@@!!!!5 Create a new ' + entityXML.entityproperty('name') + 'Row instance')
+    codelist.append('@$@!#%#@@!!!!2        Dim ' + entityXML.entityproperty('name') + ' As New Sakila.' + entityXML.entityproperty('name') + 'DataTable()')
+    codelist.append('@$@!#%#@@!!!!2        Dim ' + entityXML.entityproperty('name') + ' As Sakila.' + entityXML.entityproperty('name') + 'Row = ' + entityXML.entityproperty('name') + '.New' + entityXML.entityproperty('name') + 'Row()')
+    codelist.append('@$@!#%#@@!!!!2		')
+    propertyindex = 0
+    propertycount = len(o_XML.entities('property'))
+    <property>
+        propertyXML = ReadXML.ReadXML(each_property, o_GenerateCode.codeobjects, o_GenerateCode.links, True, o_GenerateCode.getmappers()) 
+        o_XML = propertyXML
+        
+        codelist.append('@$@!#%#@@!!!!2_121@##43' + entityXML.entityproperty('name') + '.' + propertyXML.entityproperty('name') + ' = ' + propertyXML.entityproperty('name') + '')
+        
+        propertyindex += 1
+        if propertyindex < propertycount:
+        	codelist.append('')
+        </property>
+    codelist.append('@$@!#%#@@!!!!2')
+    codelist.append('@$@!#%#@@!!!!2        ')
+    codelist.append('@$@!#%#@@!!!!2        @$@!#%#@@!!!!5 Add the new ' + entityXML.entityproperty('name') + '')
+    codelist.append('@$@!#%#@@!!!!2        ' + entityXML.entityproperty('name') + '.Add' + entityXML.entityproperty('name') + 'Row(' + entityXML.entityproperty('name') + ')')
+    codelist.append('@$@!#%#@@!!!!2        Dim rowsAffected As Integer = Adapter.Update(' + entityXML.entityproperty('name') + ')')
+    codelist.append('@$@!#%#@@!!!!2')
+    codelist.append('@$@!#%#@@!!!!2        @$@!#%#@@!!!!5 Return true if precisely one row was inserted, otherwise false')
+    codelist.append('@$@!#%#@@!!!!2        Return rowsAffected = 1')
+    codelist.append('@$@!#%#@@!!!!2    End Function')
+    
+    entityindex += 1
+    if entityindex < entitycount:
+    	codelist.append('')</entity>
+codelist.append('@$@!#%#@@!!!!2')
+codelist.append('@$@!#%#@@!!!!2End Class')
+codelist.append('@$@!#%#@@!!!!2')
+</entity>
+codelist.append('@$@!#%#@@!!!!2')

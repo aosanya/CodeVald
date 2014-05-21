@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d64adaae-516f-42e9-8f23-25210e8bb891" name="Default" comment="Hardcore Preview">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/codevald_generators/ConvertMySQLtoXMLTest.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevald_generators/CodeGenerator.py" afterPath="$PROJECT_DIR$/codevald_generators/CodeGenerator.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevald_generators/ConvertMySQLtoXMLTest.py" afterPath="$PROJECT_DIR$/codevald_generators/ConvertMySQLtoXMLTest.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevald_generators/GenerateCodeTest.py" afterPath="$PROJECT_DIR$/codevald_generators/GenerateCodeTest.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevald_generators/MySQLtoXML.py" afterPath="$PROJECT_DIR$/codevald_generators/MySQLtoXML.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevald_generators/ReadXML.py" afterPath="$PROJECT_DIR$/codevald_generators/ReadXML.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevaldapp/data/codetorun.txt" afterPath="$PROJECT_DIR$/codevaldapp/data/codetorun.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevaldapp/data/codetorun1.txt" afterPath="$PROJECT_DIR$/codevaldapp/data/codetorun1.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevaldapp/data/codetorun10.txt" afterPath="$PROJECT_DIR$/codevaldapp/data/codetorun10.txt" />
@@ -17,7 +20,15 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevaldapp/data/codetorun6.txt" afterPath="$PROJECT_DIR$/codevaldapp/data/codetorun6.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevaldapp/data/codetorun7.txt" afterPath="$PROJECT_DIR$/codevaldapp/data/codetorun7.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevaldapp/data/codetorun9.txt" afterPath="$PROJECT_DIR$/codevaldapp/data/codetorun9.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevaldapp/data/sakila.sql" afterPath="$PROJECT_DIR$/codevaldapp/data/sakila.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevaldapp/data/sampletemplate_django.txt" afterPath="$PROJECT_DIR$/codevaldapp/data/sampletemplate_django.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevaldapp/data/sampletemplate_vb2.txt" afterPath="$PROJECT_DIR$/codevaldapp/data/sampletemplate_vb2.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevaldapp/data/samplexml.xml" afterPath="$PROJECT_DIR$/codevaldapp/data/samplexml.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevald_generators/stringoperations.py" afterPath="$PROJECT_DIR$/codevald_generators/stringoperations.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevaldapp/templates/codevaldapp/template.html" afterPath="$PROJECT_DIR$/codevaldapp/templates/codevaldapp/template.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevaldapp/templates/codevaldapp/template_form.html" afterPath="$PROJECT_DIR$/codevaldapp/templates/codevaldapp/template_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevaldapp/data/testsakila.xml" afterPath="$PROJECT_DIR$/codevaldapp/data/testsakila.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevaldapp/views.py" afterPath="$PROJECT_DIR$/codevaldapp/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="CodeVald.iws" />
@@ -30,10 +41,12 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/CodeVald$ConvertMySQLtoXMLTest.coverage" NAME="ConvertMySQLtoXMLTest Coverage Results" MODIFIED="1399643786687" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codevald_generators" />
-    <SUITE FILE_PATH="coverage/CodeVald$GenerateCodeTest.coverage" NAME="GenerateCodeTest Coverage Results" MODIFIED="1399635235063" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codevald_generators" />
-    <SUITE FILE_PATH="coverage/CodeVald$CodeGenerator.coverage" NAME="CodeGenerator Coverage Results" MODIFIED="1399552846597" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codevald_generators" />
-    <SUITE FILE_PATH="coverage/CodeVald$MySQLtoXML.coverage" NAME="MySQLtoXML Coverage Results" MODIFIED="1399643585897" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codevald_generators" />
+    <SUITE FILE_PATH="coverage/CodeVald$ConvertMySQLtoXMLTest.coverage" NAME="ConvertMySQLtoXMLTest Coverage Results" MODIFIED="1400432723688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codevald_generators" />
+    <SUITE FILE_PATH="coverage/CodeVald$GenerateCodeTest.coverage" NAME="GenerateCodeTest Coverage Results" MODIFIED="1400707392142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codevald_generators" />
+    <SUITE FILE_PATH="coverage/CodeVald$ReadXML.coverage" NAME="ReadXML Coverage Results" MODIFIED="1400703213819" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codevald_generators" />
+    <SUITE FILE_PATH="coverage/CodeVald$stringoperations.coverage" NAME="stringoperations Coverage Results" MODIFIED="1400158523903" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codevald_generators" />
+    <SUITE FILE_PATH="coverage/CodeVald$CodeGenerator.coverage" NAME="CodeGenerator Coverage Results" MODIFIED="1400680992360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codevald_generators" />
+    <SUITE FILE_PATH="coverage/CodeVald$MySQLtoXML.coverage" NAME="MySQLtoXML Coverage Results" MODIFIED="1400363472951" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codevald_generators" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -47,20 +60,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/codevaldapp/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="192" selection-end="234" vertical-scroll-proportion="0.0" vertical-offset="840" max-vertical-offset="2520">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CodeGenerator.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/codevald_generators/CodeGenerator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="113" column="0" selection-start="3172" selection-end="3172" vertical-scroll-proportion="0.0" vertical-offset="615" max-vertical-offset="4995">
-              <folding />
+            <state line="497" column="0" selection-start="19327" selection-end="19327" vertical-scroll-proportion="-6.0" vertical-offset="7299" max-vertical-offset="7935">
+              <folding>
+                <element signature="e#20#29#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -68,25 +74,16 @@
       <file leaf-file-name="MySQLtoXML.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/codevald_generators/MySQLtoXML.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="378" column="40" selection-start="18581" selection-end="18581" vertical-scroll-proportion="-8.346154" vertical-offset="5453" max-vertical-offset="5865">
+            <state line="26" column="77" selection-start="834" selection-end="843" vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="8565">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stringoperations.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/codevald_generators/stringoperations.py">
+      <file leaf-file-name="GenerateCodeTest.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/codevald_generators/GenerateCodeTest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="92" column="0" selection-start="1976" selection-end="1976" vertical-scroll-proportion="0.0" vertical-offset="1860" max-vertical-offset="2580">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConvertMySQLtoXMLTest.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/codevald_generators/ConvertMySQLtoXMLTest.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="0" selection-start="137" selection-end="137" vertical-scroll-proportion="0.18367347" vertical-offset="0" max-vertical-offset="490">
+            <state line="13" column="45" selection-start="317" selection-end="317" vertical-scroll-proportion="0.68421054" vertical-offset="0" max-vertical-offset="780">
               <folding>
                 <element signature="e#21#30#0" expanded="true" />
               </folding>
@@ -139,12 +136,10 @@
         <option value="$PROJECT_DIR$/codevaldapp/static/codevaldapp/content/MySQLToXML.html" />
         <option value="$PROJECT_DIR$/codevaldapp/static/codevaldapp/content/GenerateCode.html" />
         <option value="$PROJECT_DIR$/codevaldapp/static/codevaldapp/content/menu.html" />
-        <option value="$PROJECT_DIR$/codevald_generators/ReadXML.py" />
         <option value="$PROJECT_DIR$/CodeVald/settings_prod.py" />
         <option value="$PROJECT_DIR$/CodeVald/passenger_wsgi.py" />
         <option value="$PROJECT_DIR$/codevaldapp/static/codevaldapp/assets/css/style.css" />
         <option value="$PROJECT_DIR$/codevald_generators/highlighter.py" />
-        <option value="$PROJECT_DIR$/codevald_generators/stringoperations.py" />
         <option value="$PROJECT_DIR$/codevaldapp/static/codevaldapp/assets/content/slider.html" />
         <option value="$PROJECT_DIR$/CodeVald/urls.py" />
         <option value="$PROJECT_DIR$/codevaldapp/urls.py" />
@@ -155,22 +150,23 @@
         <option value="$PROJECT_DIR$/codevaldapp/static/codevaldapp/assets/content/MySQLToXML.html" />
         <option value="$PROJECT_DIR$/codevaldapp/static/codevaldapp/assets/content/home.html" />
         <option value="$PROJECT_DIR$/codevaldapp/data/sampletemplate.txt" />
-        <option value="$PROJECT_DIR$/codevaldapp/views.py" />
         <option value="$PROJECT_DIR$/templates/admin/base.html" />
-        <option value="$PROJECT_DIR$/codevaldapp/templates/codevaldapp/template.html" />
-        <option value="$PROJECT_DIR$/codevaldapp/templates/codevaldapp/template_form.html" />
-        <option value="$PROJECT_DIR$/codevald_generators/CodeGenerator.py" />
-        <option value="$PROJECT_DIR$/codevald_generators/GenerateCodeTest.py" />
         <option value="$PROJECT_DIR$/codevald_generators/ConvertMySQLtoXMLTest.py" />
         <option value="$PROJECT_DIR$/codevald_generators/MySQLtoXML.py" />
+        <option value="$PROJECT_DIR$/codevald_generators/stringoperations.py" />
+        <option value="$PROJECT_DIR$/codevald_generators/GenerateCodeTest.py" />
+        <option value="$PROJECT_DIR$/codevaldapp/views.py" />
+        <option value="$PROJECT_DIR$/codevald_generators/ReadXML.py" />
+        <option value="$PROJECT_DIR$/codevald_generators/CodeGenerator.py" />
+        <option value="$PROJECT_DIR$/codevaldapp/templates/codevaldapp/template.html" />
+        <option value="$PROJECT_DIR$/codevaldapp/templates/codevaldapp/template_form.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1849" />
-    <option name="y" value="141" />
-    <option name="width" value="1744" />
-    <option name="height" value="939" />
+    <option name="y" value="22" />
+    <option name="width" value="1280" />
+    <option name="height" value="738" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -198,7 +194,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -313,6 +308,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -348,7 +344,7 @@
       <recent name="$PROJECT_DIR$/templates/admin" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.ConvertMySQLtoXMLTest">
+  <component name="RunManager" selected="Python.GenerateCodeTest">
     <configuration default="false" name="CodeGenerator" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -405,6 +401,46 @@
       <module name="CodeVald" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/codevald_generators/MySQLtoXML.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="stringoperations" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/codevald_generators" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="CodeVald" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/codevald_generators/stringoperations.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="ReadXML" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/codevald_generators" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="CodeVald" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/codevald_generators/ReadXML.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PyDebugRunner" />
       <ConfigurationWrapper RunnerId="PyDebugRunner" />
@@ -494,7 +530,27 @@
       <option name="PARAMETERS" value="" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="CodeVald" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
@@ -520,27 +576,7 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="CodeVald" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
-      <option name="host" value="" />
-      <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="" />
-      <option name="runTestServer" value="false" />
-      <option name="runNoReload" value="false" />
-      <option name="useCustomRunCommand" value="false" />
-      <option name="customRunCommand" value="" />
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -624,23 +660,29 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/codevald_generators/GenerateCodeTest.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonCover" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonCover" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <list size="5">
+    <list size="7">
       <item index="0" class="java.lang.String" itemvalue="Django server.CodeVald" />
       <item index="1" class="java.lang.String" itemvalue="Python.GenerateCodeTest" />
       <item index="2" class="java.lang.String" itemvalue="Python.CodeGenerator" />
       <item index="3" class="java.lang.String" itemvalue="Python.ConvertMySQLtoXMLTest" />
       <item index="4" class="java.lang.String" itemvalue="Python.MySQLtoXML" />
+      <item index="5" class="java.lang.String" itemvalue="Python.stringoperations" />
+      <item index="6" class="java.lang.String" itemvalue="Python.ReadXML" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Python.ConvertMySQLtoXMLTest" />
-        <item index="1" class="java.lang.String" itemvalue="Python.MySQLtoXML" />
-        <item index="2" class="java.lang.String" itemvalue="Python.CodeGenerator" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python.ReadXML" />
+        <item index="1" class="java.lang.String" itemvalue="Python.CodeGenerator" />
+        <item index="2" class="java.lang.String" itemvalue="Python.ConvertMySQLtoXMLTest" />
+        <item index="3" class="java.lang.String" itemvalue="Python.MySQLtoXML" />
+        <item index="4" class="java.lang.String" itemvalue="Python.stringoperations" />
       </list>
     </recent_temporary>
   </component>
@@ -708,20 +750,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1849" y="141" width="1744" height="939" extended-state="0" />
+    <frame x="0" y="22" width="1280" height="738" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22235157" sideWeight="0.6374853" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22136223" sideWeight="0.63731825" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329235" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3211334" sideWeight="0.49941245" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14336075" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32043344" sideWeight="0.4983845" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.09854604" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20211516" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43447462" sideWeight="0.80846065" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20840065" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.51547986" sideWeight="0.80613893" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38842976" sideWeight="0.5005875" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38842976" sideWeight="0.49941245" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.51547986" sideWeight="0.19386107" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3003096" sideWeight="0.49676898" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33013698" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -752,55 +794,43 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/codevald_generators/ConvertMySQLtoXMLTest.py</url>
-          <line>7</line>
-          <option name="timeStamp" value="137" />
+          <url>file://$PROJECT_DIR$/codevald_generators/stringoperations.py</url>
+          <line>243</line>
+          <option name="timeStamp" value="232" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/codevald_generators/MySQLtoXML.py</url>
-          <line>375</line>
-          <option name="timeStamp" value="148" />
+          <line>564</line>
+          <option name="timeStamp" value="257" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/codevald_generators/MySQLtoXML.py</url>
+          <line>432</line>
+          <option name="timeStamp" value="261" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/codevald_generators/ReadXML.py</url>
+          <line>156</line>
+          <option name="timeStamp" value="312" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/codevald_generators/ReadXML.py</url>
+          <line>56</line>
+          <option name="timeStamp" value="406" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/codevald_generators/ReadXML.py</url>
+          <line>85</line>
+          <option name="timeStamp" value="410" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="149" />
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="422" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/codevaldapp/static/codevaldapp/assets/plugins/bootstrap-datepicker/tests/assets/qunit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="11" selection-start="2117" selection-end="2117" vertical-scroll-proportion="0.0" vertical-offset="1118" max-vertical-offset="25125" />
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd_breakpoints.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="0" selection-start="2942" selection-end="2942" vertical-scroll-proportion="0.0" vertical-offset="1303" max-vertical-offset="2955" />
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.3/lib/python3.3/site-packages/bs4/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="0" selection-start="2881" selection-end="2881" vertical-scroll-proportion="0.0" vertical-offset="898" max-vertical-offset="5910" />
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.3/lib/python3.3/site-packages/bs4/element.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="947" column="0" selection-start="33972" selection-end="33972" vertical-scroll-proportion="0.0" vertical-offset="14036" max-vertical-offset="24195" />
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_execfile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="0" selection-start="1164" selection-end="1164" vertical-scroll-proportion="0.0" vertical-offset="295" max-vertical-offset="630" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CodeVald/settings_prod.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="13" selection-start="2011" selection-end="2011" vertical-scroll-proportion="0.5945946" vertical-offset="936" max-vertical-offset="1395" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CodeVald/wsgi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="48" selection-start="279" selection-end="298" vertical-scroll-proportion="0.33783785" vertical-offset="0" max-vertical-offset="444" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CodeVald/passenger_wsgi.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="58" selection-start="324" selection-end="324" vertical-scroll-proportion="0.23648648" vertical-offset="0" max-vertical-offset="444" />
@@ -808,9 +838,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/polls/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CodeVald/settings.py">
@@ -839,11 +867,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/codevaldapp/data/ModelTemplates.txt">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="7" selection-start="30" selection-end="36" vertical-scroll-proportion="0.038071066" vertical-offset="0" max-vertical-offset="394" />
+      </provider>
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/codevaldapp/data/test.txt">
@@ -913,20 +941,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CodeVald/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="113" selection-end="113" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
-          <folding>
-            <element signature="e#0#51#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="4" column="0" selection-start="113" selection-end="113" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/codevaldapp/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="6" selection-start="152" selection-end="152" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
-          <folding>
-            <element signature="e#0#42#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="5" column="6" selection-start="152" selection-end="152" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/codevaldapp/static/codevaldapp/assets/content/GenerateCode.html">
@@ -956,68 +976,84 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/codevaldapp/static/codevaldapp/assets/content/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="1044" selection-end="1044" vertical-scroll-proportion="-7.5" vertical-offset="0" max-vertical-offset="465">
-          <folding />
-        </state>
+        <state line="12" column="0" selection-start="1044" selection-end="1044" vertical-scroll-proportion="-7.5" vertical-offset="0" max-vertical-offset="465" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CodeVald/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630" />
       </provider>
     </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1537" column="0" selection-start="60667" selection-end="60667" vertical-scroll-proportion="0.0" vertical-offset="21735" max-vertical-offset="22185">
-          <folding />
-        </state>
+        <state line="1537" column="0" selection-start="60667" selection-end="60667" vertical-scroll-proportion="0.0" vertical-offset="21735" max-vertical-offset="22185" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/codevaldapp/data/sampletemplate_django.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="74" selection-end="74" vertical-scroll-proportion="0.08226691" vertical-offset="0" max-vertical-offset="547" />
+      </provider>
       <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
         <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="74" selection-end="74" vertical-scroll-proportion="0.08226691" vertical-offset="0" max-vertical-offset="547">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin/base_site.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="547">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="547" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="9" selection-start="3531" selection-end="3531" vertical-scroll-proportion="-20.0" vertical-offset="795" max-vertical-offset="1410">
+        <state line="85" column="9" selection-start="3531" selection-end="3531" vertical-scroll-proportion="-20.0" vertical-offset="795" max-vertical-offset="1410" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codevald_generators/ConvertMySQLtoXMLTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="21" selection-start="348" selection-end="348" vertical-scroll-proportion="0.0" vertical-offset="140" max-vertical-offset="465">
           <folding>
-            <marker date="1399497272000" expanded="true" signature="-1:-1" placeholder="{% block stylesheet_ie ... %}" />
+            <element signature="e#21#30#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/codevaldapp/templates/codevaldapp/template_form.html">
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd_breakpoints.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="189" column="9" selection-start="8444" selection-end="8444" vertical-scroll-proportion="-20.0" vertical-offset="2355" max-vertical-offset="2985">
+        <state line="97" column="0" selection-start="2942" selection-end="2942" vertical-scroll-proportion="0.0" vertical-offset="1314" max-vertical-offset="2955">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/codevaldapp/templates/codevaldapp/template.html">
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.3/lib/python3.3/site-packages/bs4/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="171" column="9" selection-start="7390" selection-end="7390" vertical-scroll-proportion="-20.0" vertical-offset="2085" max-vertical-offset="2715">
+        <state line="85" column="0" selection-start="2881" selection-end="2881" vertical-scroll-proportion="0.33103448" vertical-offset="909" max-vertical-offset="5910">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/codevald_generators/ReadXML.py">
+    <entry file="file://$USER_HOME$/Library/Caches/PyCharm30/python_stubs/1570853552/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="0" selection-start="1245" selection-end="1245" vertical-scroll-proportion="0.0" vertical-offset="253" max-vertical-offset="750">
+        <state line="3441" column="8" selection-start="119296" selection-end="119296" vertical-scroll-proportion="0.33248731" vertical-offset="51484" max-vertical-offset="84240">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.3/lib/python3.3/site-packages/bs4/element.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1577" column="0" selection-start="60341" selection-end="60341" vertical-scroll-proportion="0.33248731" vertical-offset="23464" max-vertical-offset="24195">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codevald_generators/stringoperations.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="160" column="35" selection-start="3644" selection-end="3644" vertical-scroll-proportion="0.0" vertical-offset="3913" max-vertical-offset="4350">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.3/lib/python3.3/urllib/request.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="279" column="0" selection-start="9353" selection-end="9353" vertical-scroll-proportion="0.0" vertical-offset="3705" max-vertical-offset="38670">
           <folding />
         </state>
       </provider>
@@ -1029,46 +1065,69 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="0" selection-start="1164" selection-end="1164" vertical-scroll-proportion="0.0" vertical-offset="327" max-vertical-offset="630">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/codevaldapp/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="192" selection-end="234" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2520">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codevald_generators/GenerateCodeTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="543" selection-end="579" vertical-scroll-proportion="0.67346936" vertical-offset="0" max-vertical-offset="720">
-          <folding>
-            <element signature="e#21#30#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codevald_generators/CodeGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="0" selection-start="3172" selection-end="3172" vertical-scroll-proportion="0.0" vertical-offset="645" max-vertical-offset="4995">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codevald_generators/stringoperations.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="0" selection-start="1976" selection-end="1976" vertical-scroll-proportion="0.0" vertical-offset="1860" max-vertical-offset="2580">
+        <state line="110" column="54" selection-start="4265" selection-end="4294" vertical-scroll-proportion="0.0" vertical-offset="1378" max-vertical-offset="2400">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/codevald_generators/MySQLtoXML.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="378" column="40" selection-start="18581" selection-end="18581" vertical-scroll-proportion="-8.346154" vertical-offset="5453" max-vertical-offset="5865">
+        <state line="26" column="77" selection-start="834" selection-end="843" vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="8565">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/codevald_generators/ConvertMySQLtoXMLTest.py">
+    <entry file="file://$PROJECT_DIR$/codevald_generators/ReadXML.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="137" selection-end="137" vertical-scroll-proportion="0.18367347" vertical-offset="0" max-vertical-offset="490">
+        <state line="17" column="0" selection-start="459" selection-end="459" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="2475">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.3/lib/python3.3/re.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="213" column="0" selection-start="10451" selection-end="10451" vertical-scroll-proportion="0.0" vertical-offset="3042" max-vertical-offset="5445">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codevald_generators/CodeGenerator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="497" column="0" selection-start="19327" selection-end="19327" vertical-scroll-proportion="-6.0" vertical-offset="7299" max-vertical-offset="7935">
+          <folding>
+            <element signature="e#20#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codevaldapp/templates/codevaldapp/template_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="157" column="4" selection-start="6731" selection-end="6731" vertical-scroll-proportion="0.516129" vertical-offset="2227" max-vertical-offset="3165">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codevaldapp/templates/codevaldapp/template.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="140" column="150" selection-start="5658" selection-end="5658" vertical-scroll-proportion="0.45564517" vertical-offset="1987" max-vertical-offset="2880">
+          <folding>
+            <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codevald_generators/GenerateCodeTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="45" selection-start="317" selection-end="317" vertical-scroll-proportion="0.68421054" vertical-offset="0" max-vertical-offset="780">
           <folding>
             <element signature="e#21#30#0" expanded="true" />
           </folding>
