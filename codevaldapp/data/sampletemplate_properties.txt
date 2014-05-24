@@ -11,4 +11,6 @@
 
 <entity>
 Public Function Add<entity.name/>(<property>ByVal <property.name/> As <property.type/></property>) As Boolean
+	start by modifying here!!
+End Function
 </entity>

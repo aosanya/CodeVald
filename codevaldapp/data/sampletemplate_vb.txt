@@ -1,11 +1,15 @@
-#objects = [entity,property]
+#<object name="entity"/>
+#<object name="property"/>
+#<object name="primarykey"/>
+#<object name="column"/>
+#<object name="index"/>
+#<link left="entity.property.name" right="entity.primarykey.column.name" type="extension"/>
+#<mapper object="property" property="type" from="smallint" to="integer"/>
+#<mapper object="property" property="type" from="TINYINT" to="integer"/>
+#<mapper object="property" property="type" from="CHAR" to="string"/>
+#<mapper object="property" property="type" from="timestamp" to="datetime"/>
+
 <entity>
-	
-      Get<entity.name/>ByCategoryID(ByVal categoryID As Integer) As Sakila.<entity.name/>DataTable
-        .Get<entity.name/>ByCategoryID(categoryID)
-
-      
-
-      AddProduct(<property>ByVal <property.name/> As <property.type/>,</property>) As Boolean
-
+      AddProduct(<property separator=",">ByVal <property.name/> As <property.type/>
+  			</property>) As Boolean
 </entity>

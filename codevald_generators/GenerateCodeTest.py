@@ -1,7 +1,7 @@
 __author__ = 'Tony'
 
 import os
-from codevald_generators.ReadXML import ReadXML
+from codevald_generators import ReadXML
 from codevald_generators.CodeGenerator import GenerateCode
 from bs4 import BeautifulSoup
 
@@ -11,14 +11,14 @@ filename = strPath + "samplexml.xml"
 
 
 
-template = strPath + "sampletemplate_vb3.txt"
+template = strPath + "sampletemplate_django.txt"
 o_template = open(template).read()
 template_soup = BeautifulSoup(o_template)
 
 
 o_GenerateCode = GenerateCode(o_template)
 o_XMLPlain = open(filename).read()
-o_XML = ReadXML(o_XMLPlain, [], "", False, o_GenerateCode.getmappers())
+o_XML = ReadXML.ReadXML(o_XMLPlain, [], "", False, o_GenerateCode.getmappers())
 
 pycode = o_GenerateCode.pycodegenerator
 codelist = []

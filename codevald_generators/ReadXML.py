@@ -67,13 +67,14 @@ class ReadXML:
                     fullparent = parent.name + "." + fullparent
             fullparent = fullparent + self.XML.name
 
-            if fullparent in self.rightlinkobjects():
+            varrightlinksobjects = self.rightlinkobjects("", "", fullparent)
+            if len(varrightlinksobjects) > 0:
                 for each_right in self.rightlinkproperties(fullparent):
-                    IDName = each_right.split(".")
-                    IDName = IDName[-1:]
-                    IDName2 = IDName[0]
+                    idname = each_right.split(".")
+                    idname = idname[-1:]
+                    idname2 = idname[0]
 
-                    IDValue = self.XML[IDName2]
+                    IDValue = self.XML[idname2]
 
                     for each_left in self.leftlinkproperties("", each_right):
                         value = self.GetObject(self.XML, each_left, IDValue, property)
@@ -81,30 +82,79 @@ class ReadXML:
         if value == "":
             value = "<#Error#>"
 
+        value = self.map_objects(property, value)
+        value = self.map_objects_links(property, value)
+
+        return value
+
+    def map_objects(self, property, value):
+        fullparent = ""
+        for parent in self.XML.parents:
+            if parent.name in self.objects:
+                fullparent = parent.name + "." + fullparent
+        fullparent = fullparent + self.XML.name
+
         for each_map in self.mappers:
-            if each_map[0] == self.XML.name and each_map[1] == property and each_map[2].lower() == value.lower():
+            if each_map[0] == fullparent and each_map[1] == property and each_map[2].lower() == value.lower():
                 value = each_map[3]
 
         return value
 
+    def map_objects_links(self, property, value):
+        fullparent = ""
+        for parent in self.XML.parents:
+            if parent.name in self.objects:
+                fullparent = parent.name + "." + fullparent
+        fullparent = fullparent + self.XML.name
 
-    def leftlinkobjects(self):
+        rightlinks = self.rightlinkproperties(fullparent)
+
+        for each_right in rightlinks:
+            for each_left in self.leftlinkobjects("", "", "", each_right):
+                for each_map in self.mappers:
+                    if each_map[0] == each_left and each_map[1] == property and each_map[2].lower() == value.lower():
+                        value = each_map[3]
+                        break
+
+        return value
+
+    def leftlinkobjects(self, leftobject = "", leftproperty = "", rightobject = "", rightproperty = ""):
         objects = []
         for each_object in self.links:
-            temp = each_object["left"]
-            temp2 = temp.split(".")
-            temp2 = ".".join(temp2[:len(temp2) - 1])
-            objects.append(temp)
+            varleftobject = each_object["left"]
+            varleftobject2 = varleftobject.split(".")
+            varleftobject2 = ".".join(varleftobject2[:len(varleftobject2) - 1])
+
+            varrightobject = each_object["right"]
+            varrightobject2 = varrightobject.split(".")
+            varrightobject2 = ".".join(varrightobject2[:len(varrightobject2) - 1])
+
+            if varleftobject2 == leftobject or each_object["left"] == leftproperty:
+                objects.append(varleftobject2)
+            elif varrightobject2 == rightobject or each_object["right"] == rightproperty:
+                objects.append(varleftobject2)
+            elif varleftobject2 == "" and leftproperty == "" and varrightobject2 == "" and rightproperty == "":
+                objects.append(varleftobject2)
 
         return objects
 
-    def rightlinkobjects(self):
+    def rightlinkobjects(self, leftobject = "", leftproperty = "", rightobject = "", rightproperty = ""):
         objects = []
         for each_object in self.links:
-            temp = each_object["right"]
-            temp2 = temp.split(".")
-            temp2 = ".".join(temp2[:len(temp2) - 1])
-            objects.append(temp2)
+            varleftobject = each_object["left"]
+            varleftobject2 = varleftobject.split(".")
+            varleftobject2 = ".".join(varleftobject2[:len(varleftobject2) - 1])
+
+            varrightobject = each_object["right"]
+            varrightobject2 = varrightobject.split(".")
+            varrightobject2 = ".".join(varrightobject2[:len(varrightobject2) - 1])
+
+            if varleftobject2 == leftobject or each_object["left"] == leftproperty:
+                objects.append(varrightobject2)
+            elif varrightobject2 == rightobject or each_object["right"] == rightproperty:
+                objects.append(varrightobject2)
+            elif varleftobject2 == "" and leftproperty == "" and varrightobject2 == "" and rightproperty == "":
+                objects.append(varrightobject2)
 
         return objects
 
@@ -116,16 +166,20 @@ class ReadXML:
             temp2 = ".".join(temp2[:len(temp2) - 1])
             if temp2 == object or each_object["right"] == left:
                 objects.append(temp)
+            elif object == "" or left == "":
+                objects.append(temp)
 
         return objects
 
-    def leftlinkproperties(self, object ="", right = ""):
+    def leftlinkproperties(self, object="", right = ""):
         objects = []
         for each_object in self.links:
             temp = each_object["left"]
             temp2 = temp.split(".")
             temp2 = ".".join(temp2[:len(temp2) - 1])
             if temp2 == object or each_object["right"] == right:
+                objects.append(temp)
+            elif object == "" or right == "":
                 objects.append(temp)
 
         return objects

@@ -1,43 +1,24 @@
-#<object name="entity"/>
-#<object name="property"/>
-#<object name="primarykey"/>
-#<object name="column"/>
-#<object name="index"/>
-#<link left="entity.property.name" right="entity.primarykey.column.name" type="extension"/>
-#<mapper object="property" property="type" from="smallint" to="integer"/>
-#<mapper object="property" property="type" from="TINYINT" to="integer"/>
-#<mapper object="property" property="type" from="CHAR" to="string"/>
-#<mapper object="property" property="type" from="timestamp" to="datetime"/>
-
-<entity>
+#<object name="entity"/>oi!
+#<object name="property"/>oi!
+#<object name="primarykey"/>oi!
+#<object name="column"/>oi!
+#<object name="index"/>oi!
+#<link left="entity.property.name" right="entity.primarykey.column.name" type="extension"/>oi!
+#<mapper object="entity.property" property="type" from="smallint" to="integer"/>oi!
+#<mapper object="entity.property" property="type" from="TINYINT" to="integer"/>oi!
+#<mapper object="entity.property" property="type" from="CHAR" to="string"/>oi!
+#<mapper object="entity.property" property="type" from="timestamp" to="datetime"/>oi!
+oi!
+<entity>oi!
+oi!
+      AddProduct(oi!
+<primarykey>oi!
+<column separator=",">oi!
+_121@##43ByVal <column.name/> As <column.type/>oi!
+</column>oi!
+_121@##43oi!
+</primarykey>oi!
+_121@##43) As Booleanoi!
+oi!
+</entity>oi!
 _121@##43
-<System.ComponentModel.DataObject()> _
-Public Class <entity.name/>BLL
-
-	<System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, True)> _
-    Public Function Add<entity.name/>(
-<property separator=",">
-_121@##43ByVal <property.name/> As <property.type/>
-</property>
-) As Boolean
-        @$@!#%#@@!!!!5 Create a new <entity.name/>Row instance
-        Dim <entity.name/> As New Sakila.<entity.name/>DataTable()
-        Dim <entity.name/> As Sakila.<entity.name/>Row = <entity.name/>.New<entity.name/>Row()
-		
-<property>
-_121@##43<entity.name/>.<property.name/> = <property.name/>
-</property>
-
-        
-        @$@!#%#@@!!!!5 Add the new <entity.name/>
-        <entity.name/>.Add<entity.name/>Row(<entity.name/>)
-        Dim rowsAffected As Integer = Adapter.Update(<entity.name/>)
-
-        @$@!#%#@@!!!!5 Return true if precisely one row was inserted, otherwise false
-        Return rowsAffected = 1
-    End Function
-</entity>
-
-End Class
-
-</entity>

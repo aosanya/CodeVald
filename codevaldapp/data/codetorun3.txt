@@ -5,41 +5,21 @@ codelist.append('@$@!#%#@@!!!!2#<object name="primarykey"/>')
 codelist.append('@$@!#%#@@!!!!2#<object name="column"/>')
 codelist.append('@$@!#%#@@!!!!2#<object name="index"/>')
 codelist.append('@$@!#%#@@!!!!2#<link left="entity.property.name" right="entity.primarykey.column.name" type="extension"/>')
-codelist.append('@$@!#%#@@!!!!2#<mapper object="property" property="type" from="smallint" to="integer"/>')
-codelist.append('@$@!#%#@@!!!!2#<mapper object="property" property="type" from="TINYINT" to="integer"/>')
-codelist.append('@$@!#%#@@!!!!2#<mapper object="property" property="type" from="CHAR" to="string"/>')
-codelist.append('@$@!#%#@@!!!!2#<mapper object="property" property="type" from="timestamp" to="datetime"/>')
+codelist.append('@$@!#%#@@!!!!2#<mapper object="entity.property" property="type" from="smallint" to="integer"/>')
+codelist.append('@$@!#%#@@!!!!2#<mapper object="entity.property" property="type" from="TINYINT" to="integer"/>')
+codelist.append('@$@!#%#@@!!!!2#<mapper object="entity.property" property="type" from="CHAR" to="string"/>')
+codelist.append('@$@!#%#@@!!!!2#<mapper object="entity.property" property="type" from="timestamp" to="datetime"/>')
 codelist.append('@$@!#%#@@!!!!2')
 <entity>
-codelist.append('@$@!#%#@@!!!!2_121@##43')
-codelist.append('@$@!#%#@@!!!!2<System.ComponentModel.DataObject()> _')
-codelist.append('@$@!#%#@@!!!!2Public Class ' + entityXML.entityproperty('name') + 'BLL')
 codelist.append('@$@!#%#@@!!!!2')
-codelist.append('@$@!#%#@@!!!!2	<System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, True)> _')
-codelist.append('@$@!#%#@@!!!!2    Public Function Add' + entityXML.entityproperty('name') + '(')
-<property separator=",">
-codelist.append('@$@!#%#@@!!!!2_121@##43ByVal ' + propertyXML.entityproperty('name') + ' As ' + propertyXML.entityproperty('type') + '')
-</property>
-codelist.append('@$@!#%#@@!!!!2) As Boolean')
-codelist.append('@$@!#%#@@!!!!2        @$@!#%#@@!!!!5 Create a new ' + entityXML.entityproperty('name') + 'Row instance')
-codelist.append('@$@!#%#@@!!!!2        Dim ' + entityXML.entityproperty('name') + ' As New Sakila.' + entityXML.entityproperty('name') + 'DataTable()')
-codelist.append('@$@!#%#@@!!!!2        Dim ' + entityXML.entityproperty('name') + ' As Sakila.' + entityXML.entityproperty('name') + 'Row = ' + entityXML.entityproperty('name') + '.New' + entityXML.entityproperty('name') + 'Row()')
-codelist.append('@$@!#%#@@!!!!2		')
-<property>
-codelist.append('@$@!#%#@@!!!!2_121@##43' + entityXML.entityproperty('name') + '.' + propertyXML.entityproperty('name') + ' = ' + propertyXML.entityproperty('name') + '')
-</property>
-codelist.append('@$@!#%#@@!!!!2')
-codelist.append('@$@!#%#@@!!!!2        ')
-codelist.append('@$@!#%#@@!!!!2        @$@!#%#@@!!!!5 Add the new ' + entityXML.entityproperty('name') + '')
-codelist.append('@$@!#%#@@!!!!2        ' + entityXML.entityproperty('name') + '.Add' + entityXML.entityproperty('name') + 'Row(' + entityXML.entityproperty('name') + ')')
-codelist.append('@$@!#%#@@!!!!2        Dim rowsAffected As Integer = Adapter.Update(' + entityXML.entityproperty('name') + ')')
-codelist.append('@$@!#%#@@!!!!2')
-codelist.append('@$@!#%#@@!!!!2        @$@!#%#@@!!!!5 Return true if precisely one row was inserted, otherwise false')
-codelist.append('@$@!#%#@@!!!!2        Return rowsAffected = 1')
-codelist.append('@$@!#%#@@!!!!2    End Function')
-</entity>
-codelist.append('@$@!#%#@@!!!!2')
-codelist.append('@$@!#%#@@!!!!2End Class')
-codelist.append('@$@!#%#@@!!!!2')
-</entity>
+codelist.append('@$@!#%#@@!!!!2      AddProduct(')
+<primarykey>
+<column separator=",">
+codelist.append('@$@!#%#@@!!!!2_121@##43ByVal ' + columnXML.entityproperty('name') + ' As ' + columnXML.entityproperty('type') + '')
+</column>
+codelist.append('@$@!#%#@@!!!!2_121@##43')
+</primarykey>
+codelist.append('@$@!#%#@@!!!!2_121@##43) As Boolean')
 codelist.append('@$@!#%#@@!!!!2')
+</entity>
+codelist.append('@$@!#%#@@!!!!2_121@##43')

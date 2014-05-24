@@ -11,62 +11,45 @@ codelist.append('')
 codelist.append('')
 codelist.append('')
 codelist.append('\n')
+
 entityindex = 0
 entitycount = len(o_XML.entities('entity'))
 for each_entity in o_XML.entities('entity'):
     entityXML = ReadXML.ReadXML(each_entity, o_GenerateCode.codeobjects, o_GenerateCode.links, True, o_GenerateCode.getmappers()) 
     o_XML = entityXML
     
-    codelist.append('')
-    codelist.append('\n<System.ComponentModel.DataObject()> _')
-    codelist.append('\nPublic Class ' + entityXML.entityproperty('name') + 'BLL')
     codelist.append('\n')
-    codelist.append('\n	<System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, True)> _')
-    codelist.append('\n    Public Function Add' + entityXML.entityproperty('name') + '(')
-    propertyindex = 0
-    propertycount = len(o_XML.entities('property'))
-    for each_property in o_XML.entities('property'):
-        propertyXML = ReadXML.ReadXML(each_property, o_GenerateCode.codeobjects, o_GenerateCode.links, True, o_GenerateCode.getmappers()) 
-        o_XML = propertyXML
+    codelist.append('\n      AddProduct(')
+    
+    primarykeyindex = 0
+    primarykeycount = len(o_XML.entities('primarykey'))
+    for each_primarykey in o_XML.entities('primarykey'):
+        primarykeyXML = ReadXML.ReadXML(each_primarykey, o_GenerateCode.codeobjects, o_GenerateCode.links, True, o_GenerateCode.getmappers()) 
+        o_XML = primarykeyXML
         
-        codelist.append('ByVal ' + propertyXML.entityproperty('name') + ' As ' + propertyXML.entityproperty('type') + '')
         
-        propertyindex += 1
-        if propertyindex < propertycount:
-        	codelist.append(',')
+        columnindex = 0
+        columncount = len(o_XML.entities('column'))
+        for each_column in o_XML.entities('column'):
+            columnXML = ReadXML.ReadXML(each_column, o_GenerateCode.codeobjects, o_GenerateCode.links, True, o_GenerateCode.getmappers()) 
+            o_XML = columnXML
+            
+            codelist.append('ByVal ' + columnXML.entityproperty('name') + ' As ' + columnXML.entityproperty('type') + '')
+            
+            columnindex += 1
+            if columnindex < columncount:
+            	codelist.append(',')
+            
+        codelist.append('')
         
-    codelist.append('\n) As Boolean')
-    codelist.append('\n        \' Create a new ' + entityXML.entityproperty('name') + 'Row instance')
-    codelist.append('\n        Dim ' + entityXML.entityproperty('name') + ' As New Sakila.' + entityXML.entityproperty('name') + 'DataTable()')
-    codelist.append('\n        Dim ' + entityXML.entityproperty('name') + ' As Sakila.' + entityXML.entityproperty('name') + 'Row = ' + entityXML.entityproperty('name') + '.New' + entityXML.entityproperty('name') + 'Row()')
-    codelist.append('\n		')
-    propertyindex = 0
-    propertycount = len(o_XML.entities('property'))
-    for each_property in o_XML.entities('property'):
-        propertyXML = ReadXML.ReadXML(each_property, o_GenerateCode.codeobjects, o_GenerateCode.links, True, o_GenerateCode.getmappers()) 
-        o_XML = propertyXML
-        
-        codelist.append('' + entityXML.entityproperty('name') + '.' + propertyXML.entityproperty('name') + ' = ' + propertyXML.entityproperty('name') + '')
-        
-        propertyindex += 1
-        if propertyindex < propertycount:
+        primarykeyindex += 1
+        if primarykeyindex < primarykeycount:
         	codelist.append('')
         
-    codelist.append('\n')
-    codelist.append('\n        ')
-    codelist.append('\n        \' Add the new ' + entityXML.entityproperty('name') + '')
-    codelist.append('\n        ' + entityXML.entityproperty('name') + '.Add' + entityXML.entityproperty('name') + 'Row(' + entityXML.entityproperty('name') + ')')
-    codelist.append('\n        Dim rowsAffected As Integer = Adapter.Update(' + entityXML.entityproperty('name') + ')')
-    codelist.append('\n')
-    codelist.append('\n        \' Return true if precisely one row was inserted, otherwise false')
-    codelist.append('\n        Return rowsAffected = 1')
-    codelist.append('\n    End Function')
+    codelist.append(') As Boolean')
+    codelist.append('\n')
     
     entityindex += 1
     if entityindex < entitycount:
     	codelist.append('')
-codelist.append('\n')
-codelist.append('\nEnd Class')
-codelist.append('\n')
-
-codelist.append('\n')
+codelist.append('')

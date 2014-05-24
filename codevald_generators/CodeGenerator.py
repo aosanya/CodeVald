@@ -17,10 +17,11 @@ except:
 strCodeLine = "@$@!#%#@@!!!!2"
 strPyLine = "@$@!#%#@@!!!!3"
 strPyLineNoLine = "@$@!#%#@@!!!!3_121@##43"
-strPyLineNoLineNew = "@$@!#%#@@!!!!2_121@##43"
+strPyLineNoTemplateLine = "@$@!#%#@@!!!!2_121@##43"
 strNoCloseQuote = "@$@!#%#@@!!!!4"
 strPreviousQuote = "@$@!#%#@@!!!!5"
-
+strPyIFLine = "1$@!#%5+@@!!!!6_1"
+strPyIndent = "1$@!#%5+@@!!!!6_2"
 
 class GenerateCode:
     def __init__(self, a_template):
@@ -71,87 +72,96 @@ class GenerateCode:
     def pycodegenerator(self):
         self.code = self.template
         #self.code = self.code.replace("\n", strNewLine)
-        for each_object in self.codeobjects:
-            self.preset_loops(each_object)
-        self.createpylines()
-        self.writecode("codetorun1_0.txt", self.code.replace(strPyLine, "\n"))
+        #for each_object in self.codeobjects:
+        self.clean_up_closetags()
 
+        self.preset_loops()
+        #self.writecode("codetorun1_0.txt", self.code.replace(strPyLine, "oi!\n"))
+        self.createpylines()
+        #self.writecode("codetorun1_0.txt", self.code.replace(strPyLine, "oi!\n"))
 
         self.clean_up1()
 
-        self.writecode("codetorun1_1_1.txt", self.code.replace(strPyLine, "\n"))
-        for each_object in self.codeobjects:
-            self.set_conditions(each_object)
+        #self.writecode("codetorun1_1_1.txt", self.code.replace(strPyLine, "oi!\n"))
+        self.set_conditions()
 
-        self.writecode("codetorun1.txt", self.code.replace(strPyLine, "\n"))
+        #self.writecode("codetorun1.txt", self.code.replace(strPyLine, "oi!\n"))
 
         self.addcodeappend1()
 
-        self.writecode("codetorun2.txt", self.code.replace(strPyLine, "\n"))
+        #self.writecode("codetorun2.txt", self.code.replace(strPyLine, "\n"))
 
         for each_object in self.codeobjects:
             self.set_entityproperties(each_object.replace(strPyLine, "\n"))
 
-        self.writecode("codetorun3.txt", self.code.replace(strPyLine, "\n"))
+        #self.writecode("codetorun3.txt", self.code.replace(strPyLine, "\n"))
 
         self.decorateobjects()
 
-        self.writecode("codetorun4.txt", self.code.replace(strPyLine, "\n"))
+        #self.writecode("codetorun4.txt", self.code.replace(strPyLine, "\n"))
 
         for each_object in self.codeobjects:
             self.indent(each_object)
 
-        self.writecode("codetorun4_1.txt", self.code.replace(strPyLine, "\n"))
-
-
+        #self.writecode("codetorun4_1.txt", self.code.replace(strPyLine, "\n"))
 
         for each_object in self.codeobjects:
             self.set_loops(each_object)
 
-        self.writecode("codetorun4_2.txt", self.code.replace(strPyLine, "\n"))
+        #self.writecode("codetorun4_2.txt", self.code.replace(strPyLine, "\n"))
         #self.set_loops("property")
         #self.set_entity_name()
         #self.set_property_name()
         #self.set_property_sub()
         #self.clean_up2()
-        self.writecode("codetorun6.txt", self.code)
+        #self.writecode("codetorun6.txt", self.code.replace(strPyLine, "\n"))
         #self.removeemptylines()
-        self.writecode("codetorun7.txt", self.code)
+        #self.writecode("codetorun7.txt", self.code.replace(strPyLine, "\n"))
         self.addcodeappend2()
 
-        self.writecode("codetorun9.txt", self.code)
+        #self.writecode("codetorun9.txt", self.code.replace(strPyLine, "\n"))
 
-        self.clean_up2()
-        self.writecode("codetorun10.txt", self.code)
+        self.end_clean_up_escapes()
+        self.end_removeremaining_tags()
+        #self.writecode("codetorun10.txt", self.code.replace(strPyLine, "\n"))
 
         return self.code
 
-    def writecode(self, filename, content):
-        strPath = os.path.dirname(__file__) + "/../codevaldapp/data/"
-        filename = strPath + filename
-        f = open(filename, "w")
-        f.write(content)
-        f.close()
+    #def writecode(self, filename, content):
+    #    strPath = os.path.dirname(__file__) + "/../codevaldapp/data/"
+    #    filename = strPath + filename
+    #    f = open(filename, "w")
+    #    f.write(content)
+    #    f.close()
 
-    def preset_loops(self, looptag):
-        soup = BeautifulSoup(self.template)
-        instances = soup.find_all(re.compile("^" + looptag +  "."))
+    def preset_loops(self):
+        #soup = BeautifulSoup(self.template)
+        #instances = soup.find_all(re.compile("^" + looptag +  "." + '(\s*?\S*?)*' + '>{1}'))
+
+        instances = self.getcomplextags(self.code, self.codeobjects)
         newcode = self.code
         for each_instance in instances:
             opencode = ""
             closecode = ""
-            splitobject = each_instance.name.split(".")
+            prevclosetag = ""
+            splitobject = each_instance[1:-1].split(".")
             loopcount = 0
             loopreset = False
-            for obj in splitobject:
+            for objs in splitobject:
+                subobjects = objs.split(' ')
+                obj = subobjects[0]
                 if obj in self.codeobjects:
                     prevtag = obj
-                    opencode = opencode + "<" + obj + ">"
+                    opencode = opencode + "<" + objs + ">"
                     closecode =  "</" + obj + ">" + closecode
+                    if prevclosetag == '':
+                        prevclosetag = obj
+                    else:
+                        prevclosetag = prevclosetag + "." + obj
                     loopcount += 1
                 else:
                     if loopcount > 1:
-                        opencode = opencode + "<" + prevtag + "." + obj + "/>"
+                        opencode = opencode + "<" + prevtag + "." + objs + "/>"
                         code_replacement = opencode + closecode
                         newcode = newcode.replace("<" + each_instance.name + "/>", code_replacement)
 
@@ -159,9 +169,9 @@ class GenerateCode:
                     break
 
             if not loopreset:
-                code_replacement = opencode + strPyLine
-                newcode = newcode.replace("<" + each_instance.name + ">", code_replacement)
-                newcode = newcode.replace("</" + each_instance.name + ">", closecode)
+                code_replacement = opencode + strPyLineNoLine
+                newcode = newcode.replace(each_instance, code_replacement)
+                newcode = newcode.replace("</" + prevclosetag + ">", closecode)
 
         self.template = newcode
         self.code = newcode
@@ -180,7 +190,22 @@ class GenerateCode:
             newcode = newcode.replace("</" + looptag + ">", "")
         self.code = newcode
 
-    def set_conditions(self, looptag):
+    def set_conditions(self):
+        newcode = self.code
+        conditional_tags = self.getopentags_coditional(self.code, self.codeobjects)
+        for each_instance in conditional_tags:
+            splitobject = each_instance[1:-1].split(".")
+            fullproperty = each_instance[1:-1]
+            looptag = ".".join(splitobject[:len(splitobject) - 1])
+            property = splitobject[-1]
+
+
+            newcode = strPyIFLine + 'if ' + looptag + "XML.entityproperty('" + property + "')"
+            newcode = newcode + ' != "<#Error#>":' + strPyIndent + strPyLine
+            self.code = self.code.replace(each_instance, strPyLine + newcode)
+
+
+    def set_conditionsold(self, looptag):
         soup = BeautifulSoup(self.template)
         instances = soup.find_all(re.compile("^" + looptag +  "."))
         newcode = self.code
@@ -301,9 +326,9 @@ class GenerateCode:
                 Tag = strInstance[oTagOpen:oTagClose + len(">")]
                 Temp = Tag.replace("/>", ">")
                 if Tag == Temp:
-                    newcode = newcode.replace(Tag, strPyLine + Tag + strPyLineNoLine)
+                    newcode = newcode.replace(Tag, strPyLine + Tag + strPyLine)
                     newcode = newcode.replace(strPyLine + strPyLine + Tag, strPyLine + Tag)
-                    newcode = newcode.replace(Tag + strPyLine + strPyLine, Tag + strPyLineNoLine)
+                    newcode = newcode.replace(Tag + strPyLine + strPyLine, Tag + strPyLine)
 
         closetags = self.getCloseTags(self.code, self.codeobjects)
         for each_tag in closetags:
@@ -313,17 +338,31 @@ class GenerateCode:
         newcode = newcode.replace("\'", strPreviousQuote)
         self.code = newcode
 
-    def clean_up2(self):
+    def clean_up_closetags(self):
+        newcode = self.code
+        closetags = self.getCloseTags(self.code, self.codeobjects)
+        for each_tag in closetags:
+
+            new_tag = each_tag.replace(" ", "")
+
+            newcode = newcode.replace(each_tag, strPyLine + new_tag)
+            newcode = newcode.replace(strPyLine + strPyLine + new_tag, strPyLine + new_tag)
+
+        self.code = newcode
+
+    def end_clean_up_escapes(self):
         self.removeobjectsdefinition("object")
         self.removeobjectsdefinition("link")
         self.removeobjectsdefinition("mapper")
 
         newcode = self.code
 
-        newcode = newcode.replace(strPyLineNoLineNew, "")
+        newcode = newcode.replace(strPyLineNoTemplateLine, "")
+        newcode = newcode.replace(strPyIndent + strPyLine, "\n\t")
         newcode = newcode.replace(strPyLine, "\n")
         newcode = newcode.replace(strCodeLine, "\\n")
         newcode = newcode.replace(strPreviousQuote, "\\'")
+        newcode = newcode.replace(strPyIFLine, "")
         self.code = newcode
 
     def createpylines(self):
@@ -331,7 +370,7 @@ class GenerateCode:
         newcode = newcode.replace("\n", strPyLine)
         closetags = self.getCloseTags(self.code, self.codeobjects)
         for each_tag in closetags:
-            newcode = newcode.replace(each_tag, each_tag + strPyLine)
+            newcode = newcode.replace(each_tag, each_tag + strPyLineNoLine)
         self.code = newcode
 
     def removeemptylines(self):
@@ -347,12 +386,20 @@ class GenerateCode:
         newcode = newcode.replace(strCodeLine, "\\n")
         self.code = newcode
 
+    def end_removeremaining_tags(self):
+        newcode = self.code
+        closetags = self.getCloseTags(self.code, self.codeobjects)
+        for each_tag in closetags:
+            newcode = newcode.replace(each_tag, "")
+        self.code = newcode
+
     def addcodeappend1(self):
-        checkloops = self.getopentags(self.template, self.codeobjects)
+        opentags = self.getopentags(self.template, self.codeobjects)
         closetags = self.getCloseTags(self.code, self.codeobjects)
 
-        checkloops = checkloops + closetags
-        self.addcodeappendactual(checkloops)
+        checkloops = opentags + closetags
+        checkloops.append(strPyIFLine)
+        self.addcodeappendactual(checkloops, opentags, closetags)
 
     def addcodeappend2(self):
         loops = self.codetags
@@ -362,33 +409,34 @@ class GenerateCode:
             newtag = each_loop
             newtag = newtag.replace("<", "")
             newtag = newtag.replace(">", "")
-            newtag = newtag + "XML"
-            checkloops.append(newtag)
+            newtag = newtag
+            checkloops.append(newtag + "XML")
+            checkloops.append(newtag + "index =")
 
         checkloops.append("")
         checkloops.append("for each")
         checkloops.append("o_XML")
         checkloops.append("codelist.append")
 
-        self.addcodeappendactual(checkloops)
+        opentags = self.getopentags(self.template, self.codeobjects)
+        closetags = self.getCloseTags(self.code, self.codeobjects)
 
-    def addcodeappendactual(self, checkloops):
+        self.addcodeappendactual(checkloops, opentags, closetags)
+
+    def addcodeappendactual(self, checkloops, opentags, closetags):
         newcode = self.code
         newcodelist = newcode.split(strPyLine)
         newcode = ""
         for each_line in newcodelist:
-
             if not stringoperations.startswith(each_line.lstrip(" "), checkloops):
                 NoClose = []
                 NoClose.append(strNoCloseQuote)
                 if not stringoperations.startswith(each_line.lstrip(" "), NoClose):
                     tempcode =  "codelist.append('" + strCodeLine + "<code>')"
-
                     tempcode = tempcode.replace("<code>", each_line.rstrip('\n'))
                     newcode = newcode + strPyLine + tempcode
                 else:
                     tempcode =  "codelist.append('<code>)"
-
                     tempcode = tempcode.replace("<code>", each_line.rstrip('\n'))
                     tempcode = tempcode.replace(strNoCloseQuote, "")
                     newcode = newcode + strPyLine + tempcode
@@ -415,12 +463,15 @@ class GenerateCode:
                 self.code = stringoperations.replacephrase(self.code, oldcode, newcode, each_instance, 1)
 
     def decorateobjects(self):
+
+        contionaltags = self.getopentags_coditional(self.code, self.codeobjects)
         for each_object in self.codeobjects:
             objects = []
             objects.append(each_object)
             opentags = self.getopentags(self.code, objects)
             for each_opentag in opentags:
-                self.code = stringoperations.replacephrase(self.code, each_opentag, each_object + "index = 0" + strPyLine + each_object + "count = len(o_XML.entities('" + each_object + "'))" + strPyLine + each_opentag + strPyLine + each_object + "XML = ReadXML.ReadXML(each_" + each_object + ", o_GenerateCode.codeobjects, o_GenerateCode.links, True, o_GenerateCode.getmappers()) " + strPyLine + "o_XML = " + each_object + "XML" + strPyLine, 0)
+                #if each_opentag not in contionaltags:
+                self.code = stringoperations.replacephrase(self.code, each_opentag, strPyLine + each_object + "index = 0" + strPyLine + each_object + "count = len(o_XML.entities('" + each_object + "'))" + strPyLine + each_opentag + strPyLine + each_object + "XML = ReadXML.ReadXML(each_" + each_object + ", o_GenerateCode.codeobjects, o_GenerateCode.links, True, o_GenerateCode.getmappers()) " + strPyLine + "o_XML = " + each_object + "XML" + strPyLine, 0)
 
                 instances = stringoperations.string_instance(self.code, each_opentag)
                 separator = ""
@@ -490,17 +541,57 @@ class GenerateCode:
 
         return Tags
 
+    def getopentags_coditional(self, xml, objects):
+        Tags = []
+
+        for each_obj in objects:
+            #p = re.compile('<\s*' + each_obj + '((\s*\w*"*)*' + "(\s*\w*'*)*)>")
+            p = re.compile('<\s*' + each_obj + '(\s*?\S*?)*' + '>{1}')
+
+            iterator = p.finditer(xml)
+            for match in iterator:
+                temp = match.group()
+                temp = temp.replace("/>", ">")
+                temp = temp.replace("</", "<")
+                if temp == match.group():
+                    try:
+                        foundspace = temp.index(" ", 0)
+                    except:
+                        foundspace = -1
+
+                    if foundspace == -1:
+                        actualtag = temp[1:-1]
+                        actuals = actualtag.split(".")
+                        if len(actuals) > 1:
+                            if actuals[len(actuals)-1] not in objects:
+                                if temp not in Tags:
+                                    Tags.append(match.group())
+
+        return Tags
+
     def getCloseTags(self, xml, objects):
         Tags = []
 
         for each_obj in objects:
-            p = re.compile('<//*' + each_obj + '*>')
+            p = re.compile('</\s*' + each_obj  + '(\s*?\S*?)*' + '>{1}')
 
             iterator = p.finditer(xml)
             for match in iterator:
                 temp = match.group()
                 if temp not in Tags:
                     Tags.append(match.group())
+
+        return Tags
+
+    def getcomplextags(self, xml, objects):
+        Tags = []
+
+        for each_obj in objects:
+            p = re.compile('<{1}\s*' + each_obj + '\.(\s*?\S*?)*' + '>{1}')
+
+            iterator = p.finditer(xml)
+            for match in iterator:
+                Tags.append(match.group())
 
         return Tags
 
