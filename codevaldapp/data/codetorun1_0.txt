@@ -1,20 +1,0 @@
-#<object name="entity"/>oi!
-#<object name="property"/>oi!
-#<object name="primarykey"/>oi!
-#<object name="column"/>oi!
-#<object name="index"/>oi!
-#<link left="entity.property.name" right="entity.primarykey.column.name" type="extension"/>oi!
-#<mapper object="entity.property" property="type" from="smallint" to="integer"/>oi!
-#<mapper object="entity.property" property="type" from="TINYINT" to="integer"/>oi!
-#<mapper object="entity.property" property="type" from="CHAR" to="string"/>oi!
-#<mapper object="entity.property" property="type" from="timestamp" to="datetime"/>oi!
-oi!
-<entity>oi!
-      AddProduct(<primarykey><column separator=",">oi!
-_121@##43ByVal <column.name/> As <column.type/>oi!
-</column>oi!
-_121@##43</primarykey>oi!
-_121@##43) As Booleanoi!
-oi!
-</entity>oi!
-_121@##43

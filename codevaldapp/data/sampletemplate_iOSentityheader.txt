@@ -1,0 +1,37 @@
+#<object name="entity"/>
+#<object name="property"/>
+#<object name="primarykey"/>
+#<object name="column"/>
+#<object name="index"/>
+#<link left="entity.property.name" right="entity.primarykey.column.name" type="extension"/>
+#<mapper object="entity.property" property="type" from="smallint" to="NSInteger"/>
+#<mapper object="entity.property" property="type" from="TINYINT" to="NSInteger"/>
+#<mapper object="entity.property" property="type" from="CHAR" to="NSString"/>
+#<mapper object="entity.property" property="type" from="timestamp" to="NSDate"/>
+
+<entity>
+//
+//  <entity.name/>.h
+//  <entity.name/>
+//
+//  Created by Your Name.
+//  Copyright 2014 Your Name. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface <entity.name/> : NSObject {
+	
+    int _uniqueId;
+    <property>    <property.type/> *_<property.name/>;</property>
+    
+}
+
+@property (nonatomic, assign) int uniqueId;
+<property>@property (nonatomic, copy) <property.type/> *<property.name/>;</property>
+
+
+- (id)initWithUniqueId:(int)uniqueId <property separator=" "><property.name/>:(<property.type/> *)<property.name/></property>;
+
+@end
+</entity>

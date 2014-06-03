@@ -73,19 +73,20 @@ class GenerateCode:
         self.code = self.template
         #self.code = self.code.replace("\n", strNewLine)
         #for each_object in self.codeobjects:
-        self.clean_up_closetags()
 
+        self.clean_up_closetags()
+        #self.writecode("codetorun1_0_2.txt", self.code.replace(strPyLine, "\n"))
         self.preset_loops()
-        #self.writecode("codetorun1_0.txt", self.code.replace(strPyLine, "oi!\n"))
+        #self.writecode("codetorun1_0_3.txt", self.code.replace(strPyLine, "\n"))
         self.createpylines()
-        #self.writecode("codetorun1_0.txt", self.code.replace(strPyLine, "oi!\n"))
+        #self.writecode("codetorun1_0_4.txt", self.code.replace(strPyLine, "\n"))
 
         self.clean_up1()
 
-        #self.writecode("codetorun1_1_1.txt", self.code.replace(strPyLine, "oi!\n"))
+        #self.writecode("codetorun1_1_1.txt", self.code.replace(strPyLine, "\n"))
         self.set_conditions()
 
-        #self.writecode("codetorun1.txt", self.code.replace(strPyLine, "oi!\n"))
+        #self.writecode("codetorun1.txt", self.code.replace(strPyLine, "\n"))
 
         self.addcodeappend1()
 
@@ -123,16 +124,21 @@ class GenerateCode:
 
         self.end_clean_up_escapes()
         self.end_removeremaining_tags()
+
+        self.addvariables()
         #self.writecode("codetorun10.txt", self.code.replace(strPyLine, "\n"))
 
         return self.code
 
-    #def writecode(self, filename, content):
-    #    strPath = os.path.dirname(__file__) + "/../codevaldapp/data/"
-    #    filename = strPath + filename
-    #    f = open(filename, "w")
-    #    f.write(content)
-    #    f.close()
+    def writecode(self, filename, content):
+        strPath = os.path.dirname(__file__) + "/../codevaldapp/data/"
+        filename = strPath + filename
+        f = open(filename, "w")
+        f.write(content)
+        f.close()
+
+    def addvariables(self):
+        self.code =  "o_XMLArray = []\n" + self.code
 
     def preset_loops(self):
         #soup = BeautifulSoup(self.template)
@@ -177,8 +183,6 @@ class GenerateCode:
         self.code = newcode
 
     def set_loops(self, looptag):
-        instances = self.getinstances(self.template, looptag)
-
         newcode = self.code
         objects = []
         objects.append(looptag)
@@ -471,7 +475,7 @@ class GenerateCode:
             opentags = self.getopentags(self.code, objects)
             for each_opentag in opentags:
                 #if each_opentag not in contionaltags:
-                self.code = stringoperations.replacephrase(self.code, each_opentag, strPyLine + each_object + "index = 0" + strPyLine + each_object + "count = len(o_XML.entities('" + each_object + "'))" + strPyLine + each_opentag + strPyLine + each_object + "XML = ReadXML.ReadXML(each_" + each_object + ", o_GenerateCode.codeobjects, o_GenerateCode.links, True, o_GenerateCode.getmappers()) " + strPyLine + "o_XML = " + each_object + "XML" + strPyLine, 0)
+                self.code = stringoperations.replacephrase(self.code, each_opentag, strPyLine + each_object + "index = 0" + strPyLine + each_object + "count = len(o_XML.entities('" + each_object + "'))" + strPyLine + each_opentag + strPyLine + each_object + "XML = ReadXML.ReadXML(each_" + each_object + ", o_GenerateCode.codeobjects, o_GenerateCode.links, True, o_GenerateCode.getmappers()) " + strPyLine + "o_XML = " + each_object + "XML" + strPyLine + "o_XMLArray.append(o_XML)" + strPyLine, 0)
 
                 instances = stringoperations.string_instance(self.code, each_opentag)
                 separator = ""
@@ -481,7 +485,7 @@ class GenerateCode:
                     tag_close = stringoperations.string_oneinstance(self.code, "</" + each_object + ">", each_instance)
 
                     if tag_close != -1:
-                        self.code = stringoperations.replacephrase(self.code, "</" + each_object + ">", strPyLine + each_object + "index += 1" + strPyLine + "if " + each_object + "index < " + each_object + "count:" + strPyLine + "\tcodelist.append('" + separator + "')" + strPyLine + "</" + each_object + ">", each_instance ,1)
+                        self.code = stringoperations.replacephrase(self.code, "</" + each_object + ">", strPyLine + each_object + "index += 1" + strPyLine + "if " + each_object + "index < " + each_object + "count:" + strPyLine + "\tcodelist.append('" + separator + "')" + strPyLine + "o_XMLArray.pop()" + strPyLine + "if len(o_XMLArray)>0:" + strPyLine + "\to_XML = o_XMLArray[-1]" + strPyLine + "</" + each_object + ">", each_instance ,1)
 
     def removeobjectsdefinition(self, object):
         instances = stringoperations.string_instance(self.code, "#<" + object)
@@ -525,19 +529,23 @@ class GenerateCode:
 
     def getopentags(self, xml, objects):
         Tags = []
+        ps = []
+        for each_obj in objects:
+            ps.append(re.compile('<\s*' + each_obj + " " + '(\s*?\S*?)*' + '>{1}'))
+            ps.append(re.compile('<\s*' + each_obj + '(\s*?)' + '>{1}'))
 
         for each_obj in objects:
             #p = re.compile('<\s*' + each_obj + '((\s*\w*"*)*' + "(\s*\w*'*)*)>")
-            p = re.compile('<\s*' + each_obj + '(\s*?\S*?)*' + '>{1}')
-
-            iterator = p.finditer(xml)
-            for match in iterator:
-                temp = match.group()
-                temp = temp.replace("/>", ">")
-                temp = temp.replace("</", "<")
-                if temp == match.group():
-                    if temp not in Tags:
-                        Tags.append(match.group())
+            for p in ps:
+                #p = re.compile('<\s*' + each_obj + " " + '(\s*?\S*?)*' + '>{1}')
+                iterator = p.finditer(xml)
+                for match in iterator:
+                    temp = match.group()
+                    temp = temp.replace("/>", ">")
+                    temp = temp.replace("</", "<")
+                    if temp == match.group():
+                        if temp not in Tags:
+                            Tags.append(match.group())
 
         return Tags
 

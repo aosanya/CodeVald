@@ -1,55 +1,0 @@
-
-
-codelist.append('')
-codelist.append('')
-codelist.append('')
-codelist.append('')
-codelist.append('')
-codelist.append('')
-codelist.append('')
-codelist.append('')
-codelist.append('')
-codelist.append('')
-codelist.append('\n')
-
-entityindex = 0
-entitycount = len(o_XML.entities('entity'))
-for each_entity in o_XML.entities('entity'):
-    entityXML = ReadXML.ReadXML(each_entity, o_GenerateCode.codeobjects, o_GenerateCode.links, True, o_GenerateCode.getmappers()) 
-    o_XML = entityXML
-    
-    codelist.append('\n')
-    codelist.append('\n      AddProduct(')
-    
-    primarykeyindex = 0
-    primarykeycount = len(o_XML.entities('primarykey'))
-    for each_primarykey in o_XML.entities('primarykey'):
-        primarykeyXML = ReadXML.ReadXML(each_primarykey, o_GenerateCode.codeobjects, o_GenerateCode.links, True, o_GenerateCode.getmappers()) 
-        o_XML = primarykeyXML
-        
-        
-        columnindex = 0
-        columncount = len(o_XML.entities('column'))
-        for each_column in o_XML.entities('column'):
-            columnXML = ReadXML.ReadXML(each_column, o_GenerateCode.codeobjects, o_GenerateCode.links, True, o_GenerateCode.getmappers()) 
-            o_XML = columnXML
-            
-            codelist.append('ByVal ' + columnXML.entityproperty('name') + ' As ' + columnXML.entityproperty('type') + '')
-            
-            columnindex += 1
-            if columnindex < columncount:
-            	codelist.append(',')
-            
-        codelist.append('')
-        
-        primarykeyindex += 1
-        if primarykeyindex < primarykeycount:
-        	codelist.append('')
-        
-    codelist.append(') As Boolean')
-    codelist.append('\n')
-    
-    entityindex += 1
-    if entityindex < entitycount:
-    	codelist.append('')
-codelist.append('')

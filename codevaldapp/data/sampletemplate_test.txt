@@ -1,0 +1,15 @@
+#<object name="entity"/>
+#<object name="property"/>
+#<object name="primarykey"/>
+#<object name="column"/>
+#<object name="index"/>
+#<link left="entity.property.name" right="entity.primarykey.column.name" type="extension"/>
+#<mapper object="property" property="type" from="smallint" to="NSInteger"/>
+#<mapper object="property" property="type" from="TINYINT" to="NSInteger"/>
+#<mapper object="property" property="type" from="CHAR" to="NSString"/>
+#<mapper object="property" property="type" from="timestamp" to="NSDate"/>
+
+<entity>
+    <property>props1</property>
+    <property separator=",">props2</property>
+</entity>	

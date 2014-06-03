@@ -1,25 +1,0 @@
-
-codelist.append('@$@!#%#@@!!!!2#<object name="entity"/>')
-codelist.append('@$@!#%#@@!!!!2#<object name="property"/>')
-codelist.append('@$@!#%#@@!!!!2#<object name="primarykey"/>')
-codelist.append('@$@!#%#@@!!!!2#<object name="column"/>')
-codelist.append('@$@!#%#@@!!!!2#<object name="index"/>')
-codelist.append('@$@!#%#@@!!!!2#<link left="entity.property.name" right="entity.primarykey.column.name" type="extension"/>')
-codelist.append('@$@!#%#@@!!!!2#<mapper object="entity.property" property="type" from="smallint" to="integer"/>')
-codelist.append('@$@!#%#@@!!!!2#<mapper object="entity.property" property="type" from="TINYINT" to="integer"/>')
-codelist.append('@$@!#%#@@!!!!2#<mapper object="entity.property" property="type" from="CHAR" to="string"/>')
-codelist.append('@$@!#%#@@!!!!2#<mapper object="entity.property" property="type" from="timestamp" to="datetime"/>')
-codelist.append('@$@!#%#@@!!!!2')
-<entity>
-codelist.append('@$@!#%#@@!!!!2')
-codelist.append('@$@!#%#@@!!!!2      AddProduct(')
-<primarykey>
-<column separator=",">
-codelist.append('@$@!#%#@@!!!!2_121@##43ByVal <column.name/> As <column.type/>')
-</column>
-codelist.append('@$@!#%#@@!!!!2_121@##43')
-</primarykey>
-codelist.append('@$@!#%#@@!!!!2_121@##43) As Boolean')
-codelist.append('@$@!#%#@@!!!!2')
-</entity>
-codelist.append('@$@!#%#@@!!!!2_121@##43')

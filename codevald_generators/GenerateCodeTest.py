@@ -11,7 +11,7 @@ filename = strPath + "samplexml.xml"
 
 
 
-template = strPath + "sampletemplate_django.txt"
+template = strPath + "sampletemplate_vb_function_with_all_properties.txt"
 o_template = open(template).read()
 template_soup = BeautifulSoup(o_template)
 
@@ -24,6 +24,7 @@ pycode = o_GenerateCode.pycodegenerator
 codelist = []
 #print(pycode)
 
+
 filename = strPath + "codetorun.txt"
 
 f = open(filename, "w")
@@ -31,6 +32,9 @@ f.write(pycode)
 f.close()
 
 filename = strPath + "code.txt"
+
+
+
 
 
 exec(pycode)
