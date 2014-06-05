@@ -26,6 +26,16 @@
 						</span>
 					</a>
 				</li>
+                <li class="{% if currentview == "codevaldapp:blog"%}active{% endif %}">
+					<a href="{% url "codevaldapp:blog" %}">
+						<i class="fa fa-bullhorn"></i>
+						<span class="title">
+							blog
+						</span>
+                        <span class="selected">
+						</span>
+					</a>
+				</li>
 				<li class="{% if currentview == "codevaldapp:Team"%}active{% endif %}">
 					<a href="{% url "codevaldapp:Team" %}">
 						<i class="fa fa-trophy"></i>

@@ -54,6 +54,16 @@ def Team(request):
 
     return render(request, 'codevaldapp/template.html', {"title": "CodeVald : Team", "pagetitle": "Team", "pagesubtitle": "", "CurrPage": "Team", "menu": menu, "content": html})
 
+def blog(request):
+    menu = GetMenu("codevaldapp:blog")
+    content = open('codevaldapp/static/codevaldapp/assets/content/blog.html', 'r+')
+    t = Template(content.read())
+    c = Context({})
+    content.close()
+    html = t.render(c)
+
+    return render(request, 'codevaldapp/template.html', {"title": "CodeVald : blog", "pagetitle": "blog", "pagesubtitle": "", "CurrPage": "blog", "menu": menu, "content": html})
+
 
 def ConvertMySQLToXML(request):
     menu = GetMenu("codevaldapp:MySQLToXML")
@@ -123,6 +133,8 @@ def GenerateCode(request):
             #pycodegenerator = pycodegenerator.read()
 
             exec(pycodegenerator.replace('\r', ''))
+
+
             for each_code in codelist:
                 code = code + each_code
             messageclass = "msgsuccess"

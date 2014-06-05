@@ -1,0 +1,37 @@
+#<object name="entity"/>
+#<object name="property"/>
+#<object name="primarykey"/>
+#<object name="column"/>
+#<object name="index"/>
+#<link left="entity.property.name" right="entity.primarykey.column.name" type="extension"/>
+#<mapper object="entity.property" property="type" from="smallint" to="NSInteger"/>
+#<mapper object="entity.property" property="type" from="TINYINT" to="NSInteger"/>
+#<mapper object="entity.property" property="type" from="CHAR" to="NSString"/>
+#<mapper object="entity.property" property="type" from="timestamp" to="NSDate"/>
+
+#import <Foundation/Foundation.h>
+<entity>
+#import <entity.name/>".h"
+
+@implementation <entity.name/>
+@synthesize uniqueId = _uniqueId;</property>
+<property>@synthesize <property.name/> = _<property.name/>;</property>
+
+- (id)initWithUniqueId:(int)uniqueId <property separator=" "><property.name/>:(<property.type/> *)<property.name/></property> {
+    if ((self = [super init])) {
+        self.uniqueId = uniqueId;
+<property>        self.<property.name/> = <property.name/>;</property>
+        
+    }
+    return self;
+}
+
+- (void) dealloc
+{
+<property>    self.<property.name/> = nil;</property>
+    //[super dealloc];
+}
+
+@end
+
+</entity>

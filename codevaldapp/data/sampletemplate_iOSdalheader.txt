@@ -11,20 +11,30 @@
 
 <entity>
 //
-//  <entity.name/>.h
-//  <entity.name/>
+//  dalEvents.h
+//  Events
 //
-//  Created by Your Name.
-//  Copyright 2014 Your Name. All rights reserved.
+//  Created by your name on....
+//  Copyright date your name. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+#import "/usr/include/sqlite3.h"
+#import "EventInfo.h"
+#import "Guest.h"
+@class EventDetails;
 
-
-@interface <entity.name/> : NSObject {
-	
-    int _uniqueId;
-    <property>    <property.type/> *_<property.name/>;</property>
-    
+@interface dalEvents : NSObject {
+    sqlite3 *_database;
 }
+
++ (dalEvents*)database;
+- (NSArray *)eventInfos;
+- (BOOL *)addInfos:(EventInfo *)info;
+- (BOOL *)deleteInfos:(EventInfo *)info;
+- (EventDetails *)eventDetails:(int)uniqueId;
+
+
+@end
 
 </entity>

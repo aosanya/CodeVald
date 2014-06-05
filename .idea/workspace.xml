@@ -2,22 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d64adaae-516f-42e9-8f23-25210e8bb891" name="Default" comment="Hardcore Preview">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/codevaldapp/data/code.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/codevaldapp/data/codetorun.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/codevaldapp/data/codetorun1.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/codevaldapp/data/codetorun10.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/codevaldapp/data/codetorun1_0.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/codevaldapp/data/codetorun1_1_1.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/codevaldapp/data/codetorun2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/codevaldapp/data/codetorun3.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/codevaldapp/data/codetorun4.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/codevaldapp/data/codetorun4_1.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/codevaldapp/data/codetorun4_2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/codevaldapp/data/codetorun6.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/codevaldapp/data/codetorun7.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/codevaldapp/data/codetorun9.txt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevald_generators/CodeGenerator.py" afterPath="$PROJECT_DIR$/codevald_generators/CodeGenerator.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevald_generators/GenerateCodeTest.py" afterPath="$PROJECT_DIR$/codevald_generators/GenerateCodeTest.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevaldapp/static/codevaldapp/assets/content/menu.html" afterPath="$PROJECT_DIR$/codevaldapp/static/codevaldapp/assets/content/menu.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevaldapp/data/sampletemplate_test.txt" afterPath="$PROJECT_DIR$/codevaldapp/data/sampletemplate_test.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevaldapp/templates/codevaldapp/template.html" afterPath="$PROJECT_DIR$/codevaldapp/templates/codevaldapp/template.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevaldapp/templates/codevaldapp/template_form.html" afterPath="$PROJECT_DIR$/codevaldapp/templates/codevaldapp/template_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevaldapp/urls.py" afterPath="$PROJECT_DIR$/codevaldapp/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codevaldapp/views.py" afterPath="$PROJECT_DIR$/codevaldapp/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="CodeVald.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,10 +23,10 @@
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/CodeVald$ConvertMySQLtoXMLTest.coverage" NAME="ConvertMySQLtoXMLTest Coverage Results" MODIFIED="1400432723688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codevald_generators" />
-    <SUITE FILE_PATH="coverage/CodeVald$GenerateCodeTest.coverage" NAME="GenerateCodeTest Coverage Results" MODIFIED="1401825387956" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codevald_generators" />
+    <SUITE FILE_PATH="coverage/CodeVald$GenerateCodeTest.coverage" NAME="GenerateCodeTest Coverage Results" MODIFIED="1401875219568" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codevald_generators" />
     <SUITE FILE_PATH="coverage/CodeVald$ReadXML.coverage" NAME="ReadXML Coverage Results" MODIFIED="1400851027269" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codevald_generators" />
     <SUITE FILE_PATH="coverage/CodeVald$stringoperations.coverage" NAME="stringoperations Coverage Results" MODIFIED="1400158523903" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codevald_generators" />
-    <SUITE FILE_PATH="coverage/CodeVald$CodeGenerator.coverage" NAME="CodeGenerator Coverage Results" MODIFIED="1401823682844" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codevald_generators" />
+    <SUITE FILE_PATH="coverage/CodeVald$CodeGenerator.coverage" NAME="CodeGenerator Coverage Results" MODIFIED="1401874807663" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codevald_generators" />
     <SUITE FILE_PATH="coverage/CodeVald$MySQLtoXML.coverage" NAME="MySQLtoXML Coverage Results" MODIFIED="1400363472951" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codevald_generators" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -47,35 +40,7 @@
     <favorites_list name="CodeVald" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="template_form.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/codevaldapp/templates/codevaldapp/template_form.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="34" selection-start="4244" selection-end="4244" vertical-scroll-proportion="71.125" vertical-offset="2757" max-vertical-offset="3495">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CodeGenerator.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/codevald_generators/CodeGenerator.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="534" column="60" selection-start="21617" selection-end="21617" vertical-scroll-proportion="0.49462366" vertical-offset="7796" max-vertical-offset="9390">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GenerateCodeTest.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/codevald_generators/GenerateCodeTest.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="29" selection-start="159" selection-end="159" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="795">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -93,7 +58,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/codevaldapp/models.py" />
         <option value="$PROJECT_DIR$/polls/templates/polls/detail.html" />
         <option value="$PROJECT_DIR$/polls/templates/polls/results.html" />
         <option value="$PROJECT_DIR$/polls/urls.py" />
@@ -126,8 +90,6 @@
         <option value="$PROJECT_DIR$/codevald_generators/highlighter.py" />
         <option value="$PROJECT_DIR$/codevaldapp/static/codevaldapp/assets/content/slider.html" />
         <option value="$PROJECT_DIR$/CodeVald/urls.py" />
-        <option value="$PROJECT_DIR$/codevaldapp/urls.py" />
-        <option value="$PROJECT_DIR$/codevaldapp/static/codevaldapp/assets/content/menu.html" />
         <option value="$PROJECT_DIR$/codevaldapp/static/codevaldapp/assets/content/team.html" />
         <option value="$PROJECT_DIR$/CodeVald/views.py" />
         <option value="$PROJECT_DIR$/codevaldapp/static/codevaldapp/assets/content/GenerateCode.html" />
@@ -137,20 +99,23 @@
         <option value="$PROJECT_DIR$/codevald_generators/ConvertMySQLtoXMLTest.py" />
         <option value="$PROJECT_DIR$/codevald_generators/MySQLtoXML.py" />
         <option value="$PROJECT_DIR$/codevald_generators/stringoperations.py" />
-        <option value="$PROJECT_DIR$/codevaldapp/views.py" />
         <option value="$PROJECT_DIR$/codevald_generators/ReadXML.py" />
         <option value="$PROJECT_DIR$/codevaldapp/static/codevaldapp/assets/content/home.html" />
-        <option value="$PROJECT_DIR$/codevaldapp/templates/codevaldapp/template.html" />
-        <option value="$PROJECT_DIR$/codevaldapp/templates/codevaldapp/template_form.html" />
-        <option value="$PROJECT_DIR$/codevald_generators/GenerateCodeTest.py" />
         <option value="$PROJECT_DIR$/codevald_generators/CodeGenerator.py" />
+        <option value="$PROJECT_DIR$/codevald_generators/GenerateCodeTest.py" />
+        <option value="$PROJECT_DIR$/codevaldapp/templates/codevaldapp/template_form.html" />
+        <option value="$PROJECT_DIR$/codevaldapp/views.py" />
+        <option value="$PROJECT_DIR$/codevaldapp/static/codevaldapp/assets/content/menu.html" />
+        <option value="$PROJECT_DIR$/codevaldapp/urls.py" />
+        <option value="$PROJECT_DIR$/codevaldapp/templates/codevaldapp/template.html" />
+        <option value="$PROJECT_DIR$/codevaldapp/static/codevaldapp/assets/content/blog.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
     <option name="width" value="1280" />
-    <option name="height" value="738" />
+    <option name="height" value="774" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -286,6 +251,70 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="codevaldapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="codevaldapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CodeVald" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CodeVald" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="codevaldapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="codevaldapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="img" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CodeVald" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CodeVald" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="codevald_generators" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -315,13 +344,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/codevaldapp/static/codevaldapp/assets/content/img" />
       <recent name="$PROJECT_DIR$/codevald_generators" />
       <recent name="$PROJECT_DIR$/codevaldapp/static/codevaldapp/assets/content" />
       <recent name="$PROJECT_DIR$/codevaldapp" />
       <recent name="$PROJECT_DIR$/CodeVald" />
-      <recent name="$PROJECT_DIR$/codevaldapp/static/codevaldapp/content" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/codevaldapp/static/codevaldapp/assets/content" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/templates/admin/static/admin" />
       <recent name="$PROJECT_DIR$/templates" />
@@ -514,27 +544,7 @@
       <option name="PARAMETERS" value="" />
       <method />
     </configuration>
-    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="CodeVald" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
-      <option name="host" value="" />
-      <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="" />
-      <option name="runTestServer" value="false" />
-      <option name="runNoReload" value="false" />
-      <option name="useCustomRunCommand" value="false" />
-      <option name="customRunCommand" value="" />
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
@@ -560,7 +570,27 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="CodeVald" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -734,19 +764,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1280" height="738" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="22" width="1280" height="774" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22136223" sideWeight="0.63731825" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21994135" sideWeight="0.63731825" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329235" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32043344" sideWeight="0.4983845" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3196481" sideWeight="0.4983845" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.09854604" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22778675" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23344104" sideWeight="0.49906543" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4643963" sideWeight="0.80613893" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32043344" sideWeight="0.5016155" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23021002" sideWeight="0.5009346" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3196481" sideWeight="0.5016155" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3018576" sideWeight="0.49676898" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33013698" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -806,20 +836,10 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="495" />
+      <option name="time" value="507" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/codevaldapp/templates/codevaldapp/template.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="246" selection-start="772" selection-end="1003" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="2895" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codevaldapp/static/codevaldapp/assets/content/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="40" selection-start="131" selection-end="1673" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="495" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CodeVald/passenger_wsgi.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="58" selection-start="324" selection-end="324" vertical-scroll-proportion="0.23648648" vertical-offset="0" max-vertical-offset="444" />
@@ -923,19 +943,9 @@
         <state line="4" column="0" selection-start="113" selection-end="113" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/codevaldapp/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="6" selection-start="152" selection-end="152" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/codevaldapp/static/codevaldapp/assets/content/GenerateCode.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="35" column="4" selection-start="1420" selection-end="1567" vertical-scroll-proportion="0.65606934" vertical-offset="298" max-vertical-offset="1050" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codevaldapp/static/codevaldapp/assets/content/menu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="29" selection-start="926" selection-end="954" vertical-scroll-proportion="0.62827224" vertical-offset="195" max-vertical-offset="660" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/codevald_generators/entityproperty.py">
@@ -1001,11 +1011,6 @@
         <state line="3441" column="8" selection-start="119296" selection-end="119296" vertical-scroll-proportion="0.33248731" vertical-offset="51484" max-vertical-offset="84240" />
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.3/lib/python3.3/site-packages/bs4/element.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1577" column="0" selection-start="60341" selection-end="60341" vertical-scroll-proportion="0.33248731" vertical-offset="23464" max-vertical-offset="24195" />
-      </provider>
-    </entry>
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.3/lib/python3.3/urllib/request.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="279" column="0" selection-start="9353" selection-end="9353" vertical-scroll-proportion="0.0" vertical-offset="3705" max-vertical-offset="38670" />
@@ -1033,16 +1038,6 @@
         <state line="36" column="0" selection-start="1164" selection-end="1164" vertical-scroll-proportion="0.6938776" vertical-offset="336" max-vertical-offset="630" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/codevaldapp/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="149" column="70" selection-start="6159" selection-end="6166" vertical-scroll-proportion="0.58880776" vertical-offset="1858" max-vertical-offset="2400" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codevaldapp/templates/codevaldapp/template.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="194" column="37" selection-start="8644" selection-end="8644" vertical-scroll-proportion="0.92248064" vertical-offset="2553" max-vertical-offset="3210" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/codevald_generators/stringoperations.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="138" column="0" selection-start="3300" selection-end="3380" vertical-scroll-proportion="0.04009434" vertical-offset="2053" max-vertical-offset="4350">
@@ -1055,13 +1050,6 @@
         <state line="10" column="40" selection-start="131" selection-end="1673" vertical-scroll-proportion="0.3875969" vertical-offset="0" max-vertical-offset="495" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/codevaldapp/templates/codevaldapp/template_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="34" selection-start="4244" selection-end="4244" vertical-scroll-proportion="71.125" vertical-offset="2757" max-vertical-offset="3495">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/codevald_generators/ReadXML.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="91" column="0" selection-start="2981" selection-end="2981" vertical-scroll-proportion="0.0" vertical-offset="1204" max-vertical-offset="3285">
@@ -1069,16 +1057,69 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.3/lib/python3.3/site-packages/bs4/element.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1577" column="0" selection-start="60341" selection-end="60341" vertical-scroll-proportion="0.0" vertical-offset="23494" max-vertical-offset="24195" />
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.3/lib/python3.3/sre_parse.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="567" column="0" selection-start="18870" selection-end="18870" vertical-scroll-proportion="0.0" vertical-offset="8369" max-vertical-offset="13125" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/codevald_generators/GenerateCodeTest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="29" selection-start="159" selection-end="159" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="795">
+        <state line="10" column="0" selection-start="261" selection-end="261" vertical-scroll-proportion="0.25547445" vertical-offset="0" max-vertical-offset="795" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codevaldapp/static/codevaldapp/assets/content/blog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="473" selection-end="473" vertical-scroll-proportion="0.15957446" vertical-offset="0" max-vertical-offset="376">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#iframe#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codevaldapp/templates/codevaldapp/template_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="162" column="195" selection-start="7164" selection-end="7164" vertical-scroll-proportion="0.8856383" vertical-offset="2097" max-vertical-offset="3495">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/codevald_generators/CodeGenerator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="534" column="60" selection-start="21617" selection-end="21617" vertical-scroll-proportion="0.49462366" vertical-offset="7796" max-vertical-offset="9390">
+        <state line="106" column="31" selection-start="3295" selection-end="3295" vertical-scroll-proportion="-0.07092199" vertical-offset="1590" max-vertical-offset="9600">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codevaldapp/templates/codevaldapp/template.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="46" selection-start="2641" selection-end="2641" vertical-scroll-proportion="0.49597856" vertical-offset="385" max-vertical-offset="3210">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codevaldapp/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="1" selection-start="376" selection-end="376" vertical-scroll-proportion="0.27522936" vertical-offset="0" max-vertical-offset="436">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codevaldapp/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="4" selection-start="1491" selection-end="1491" vertical-scroll-proportion="0.13711584" vertical-offset="497" max-vertical-offset="2580">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codevaldapp/static/codevaldapp/assets/content/menu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="39" selection-start="990" selection-end="990" vertical-scroll-proportion="0.4368932" vertical-offset="270" max-vertical-offset="810">
           <folding />
         </state>
       </provider>

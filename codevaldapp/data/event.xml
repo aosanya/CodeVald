@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity default_character_set="utf8" engine="InnoDB" name="events" schema="sakila">
+	<property name="id" nullable="false" type="smallint" unsigned="false"></property>
+	<property name="name" nullable="false" type="CHAR" iostype="char" unsigned="false"></property>
+	<property name="from_date" nullable="false" type="CHAR" iostype="char" unsigned="false"></property>
+	<property name="to_date" nullable="false" type="CHAR" iostype="char" unsigned="false"></property>
+	<property name="city" nullable="false" type="CHAR" iostype="char" unsigned="false"></property>
+	<primarykey>
+		<column name="id"></column>
+		<column name="film_id"></column>
+	</primarykey>
+</entity>
+<!--
+ ----------------------------------------------------- Table 'sakila'.'film_category' -----------------------------------------------------
+-->
+<entity default_character_set="utf8" engine="InnoDB" name="Guest" schema="sakila">
+	<property name="GuestID" nullable="false" type="smallint" unsigned="false"></property>
+	<property name="eventid" nullable="false" type="smallint" unsigned="false"></property>
+	<property name="name" nullable="false" type="CHAR" iostype="char" unsigned="false"></property>
+	<property name="email" nullable="false" type="CHAR" iostype="char" unsigned="false"></property>
+	<property name="adress" nullable="false" type="CHAR" iostype="char" unsigned="false"></property>
+	<property name="telephone" nullable="false" type="CHAR" iostype="char" unsigned="false"></property>
+	<property name="otherdetails" nullable="false" type="CHAR" iostype="char" unsigned="false"></property>
+	<primarykey>
+		<column name="GuestID"></column>
+	</primarykey>
+	<constraint  name="fk_EventID" ondelete="restrict" onupdate="cascade" schema_referenced="events" tbl_referenced="events">
+		<reference column="eventid" referenced="id"></reference>
+	</constraint>
+</entity>

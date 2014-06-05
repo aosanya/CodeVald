@@ -5,5 +5,6 @@ urlpatterns = patterns('',
     # url(r'^$', views.index, name='index'),
     url(r'^MySQLToXML/', views.ConvertMySQLToXML, name='MySQLToXML'),
     url(r'^GenerateCode/', views.GenerateCode, name='GenerateCode'),
+    url(r'^blog/', views.blog, name='blog'),
     url(r'^Team/', views.Team, name='Team'),
 )

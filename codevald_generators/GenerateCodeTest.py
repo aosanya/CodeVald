@@ -9,9 +9,7 @@ strPath = os.path.dirname(__file__) + "/../codevaldapp/data/"
 
 filename = strPath + "samplexml.xml"
 
-
-
-template = strPath + "sampletemplate_vb_function_with_all_properties.txt"
+template = strPath + "sampletemplate_iOSentityheader.txt"
 o_template = open(template).read()
 template_soup = BeautifulSoup(o_template)
 
@@ -33,6 +31,8 @@ f.close()
 
 filename = strPath + "code.txt"
 
+
+o_XMLArray = []
 
 
 

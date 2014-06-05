@@ -27,8 +27,8 @@ class GenerateCode:
     def __init__(self, a_template):
         self.template = a_template
         self.code = ""
-        template_soup = BeautifulSoup(self.template)
-        self.links = template_soup.find_all('link')
+        self.template_soup = BeautifulSoup(self.template)
+        self.links = self.template_soup.find_all('link')
 
 
     @property
@@ -80,7 +80,7 @@ class GenerateCode:
         #self.writecode("codetorun1_0_3.txt", self.code.replace(strPyLine, "\n"))
         self.createpylines()
         #self.writecode("codetorun1_0_4.txt", self.code.replace(strPyLine, "\n"))
-
+        #self.writecode("codetorun1_0_5.txt", self.code.replace(strPyLine, "\n"))
         self.clean_up1()
 
         #self.writecode("codetorun1_1_1.txt", self.code.replace(strPyLine, "\n"))
@@ -319,20 +319,13 @@ class GenerateCode:
     def clean_up1(self):
         newcode = self.code
 
-        for each_object in self.codeobjects:
-            instances = self.getinstances(self.template, each_object)
 
-            for each_instance in reversed(instances):
-                strInstance = each_instance.__str__()
-                oTagOpen = stringoperations.string_oneinstance(strInstance, "<", 0)
-                oTagClose = stringoperations.string_oneinstance(strInstance, ">", 0)
+        instances = self.getopentags(self.template, self.codeobjects)
 
-                Tag = strInstance[oTagOpen:oTagClose + len(">")]
-                Temp = Tag.replace("/>", ">")
-                if Tag == Temp:
-                    newcode = newcode.replace(Tag, strPyLine + Tag + strPyLine)
-                    newcode = newcode.replace(strPyLine + strPyLine + Tag, strPyLine + Tag)
-                    newcode = newcode.replace(Tag + strPyLine + strPyLine, Tag + strPyLine)
+        for each_instance in reversed(instances):
+            newcode = newcode.replace(each_instance, strPyLine + each_instance + strPyLine)
+            newcode = newcode.replace(strPyLine + strPyLine + each_instance, strPyLine + each_instance)
+            newcode = newcode.replace(each_instance + strPyLine + strPyLine, each_instance + strPyLine)
 
         closetags = self.getCloseTags(self.code, self.codeobjects)
         for each_tag in closetags:
@@ -399,6 +392,7 @@ class GenerateCode:
 
     def addcodeappend1(self):
         opentags = self.getopentags(self.template, self.codeobjects)
+        #opentags = self.getopentagsregex(self.template, self.codeobjects)
         closetags = self.getCloseTags(self.code, self.codeobjects)
 
         checkloops = opentags + closetags
@@ -486,6 +480,7 @@ class GenerateCode:
 
                     if tag_close != -1:
                         self.code = stringoperations.replacephrase(self.code, "</" + each_object + ">", strPyLine + each_object + "index += 1" + strPyLine + "if " + each_object + "index < " + each_object + "count:" + strPyLine + "\tcodelist.append('" + separator + "')" + strPyLine + "o_XMLArray.pop()" + strPyLine + "if len(o_XMLArray)>0:" + strPyLine + "\to_XML = o_XMLArray[-1]" + strPyLine + "</" + each_object + ">", each_instance ,1)
+                self.code = self.code.replace(each_opentag, "<" + each_object + ">")
 
     def removeobjectsdefinition(self, object):
         instances = stringoperations.string_instance(self.code, "#<" + object)
@@ -527,15 +522,34 @@ class GenerateCode:
 
         return Tags
 
-    def getopentags(self, xml, objects):
+    def getopentags2(self, xml, objects):
         Tags = []
-        ps = []
-        for each_obj in objects:
-            ps.append(re.compile('<\s*' + each_obj + " " + '(\s*?\S*?)*' + '>{1}'))
-            ps.append(re.compile('<\s*' + each_obj + '(\s*?)' + '>{1}'))
+        instances = self.getinstances(xml, objects)
+        for each_instance in instances:
+            strInstance = each_instance.__str__()
+            Tag = self.getregex(strInstance, ".*?>")
+            Temp = Tag.replace("/>", ">")
+            if Tag == Temp:
+                Tags.append(Tag)
+        return Tags
 
+    def getregex(self, phrase, filter):
+        p = re.compile(filter)
+        iterator = p.finditer(phrase)
+        for match in iterator:
+            return match.group()
+
+        return ""
+
+    def getopentags(self, xml, objects):
+
+        Tags = []
         for each_obj in objects:
-            #p = re.compile('<\s*' + each_obj + '((\s*\w*"*)*' + "(\s*\w*'*)*)>")
+            ps = []
+
+            ps.append(re.compile('<\s*' + each_obj + '\s+.*?' + '>'))
+            ps.append(re.compile('<\s*' + each_obj + '\s*' + '>'))
+
             for p in ps:
                 #p = re.compile('<\s*' + each_obj + " " + '(\s*?\S*?)*' + '>{1}')
                 iterator = p.finditer(xml)

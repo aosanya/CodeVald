@@ -1,0 +1,36 @@
+#<object name="entity"/>
+#<object name="property"/>
+#<object name="primarykey"/>
+#<object name="column"/>
+#<object name="index"/>
+#<link left="entity.property.name" right="entity.primarykey.column.name" type="extension"/>
+#<mapper object="entity.property" property="type" from="smallint" to="NSInteger"/>
+#<mapper object="entity.property" property="type" from="TINYINT" to="NSInteger"/>
+#<mapper object="entity.property" property="type" from="CHAR" to="NSString"/>
+#<mapper object="entity.property" property="type" from="timestamp" to="NSDate"/>
+
+<entity>
+- (NSArray *)get<entity.name/> {
+    
+    NSMutableArray *retval = [[NSMutableArray alloc] init];
+    NSString *query = @"SELECT <property separator=", ">    							<property.name/></property> FROM <entity.name/>;";
+    sqlite3_stmt *statement;
+    if (sqlite3_prepare_v2(_database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            int uniqueId = sqlite3_column_int(statement, 0);
+            
+<property>            <property.iostype/> *var<property.name/> = (<property.iostype/> *) sqlite3_column_text(statement, 1);</property>
+
+<property>			<property.type/> *<property.name/> = [[<property.type/> alloc] initWithUTF8String:var<property.name/>];</property>
+
+            <entity.name/> *obj<entity.name/> = [[<entity.name/> alloc] initWithUniqueId:uniqueId <property separator=" ">                        <property.name/>:<property.name/></property>;
+            [retval addObject:obj<entity.name/>];
+        }
+        sqlite3_finalize(statement);
+    }
+    
+    return retval;
+    
+}
+
+</entity>
